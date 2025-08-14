@@ -8,25 +8,25 @@ const footerColumns = [
 	{
 		title: 'Explore',
 		links: [
-			{ name: 'Departments', href: 'https://www.aucse.in/departments' },
-			{ name: 'History & Tours', href: 'https://www.aucse.in/about' },
-			{ name: 'Public Engagement', href: 'https://www.aucse.in/engagement' },
+			{ name: 'NAAC', href: 'https://www.aucse.in/naac' },
+			{ name: 'Clubs', href: 'https://www.aucse.in/club' },
+			{ name: 'Downloads', href: 'https://www.aucse.in/downloads' },
 		],
 	},
 	{
 		title: 'Study With Us',
 		links: [
-			{ name: 'UG Courses', href: 'https://www.aucse.in/programs' },
-			{ name: 'Grad Programs', href: 'https://www.aucse.in/programs' },
-			{ name: 'Online Learning', href: 'https://www.aucse.in/online' },
+			{ name: 'Syllabus', href: 'https://www.aucse.in/syllabus' },
+			{ name: 'Projects', href: 'https://www.aucse.in/projects' },
+			{ name: 'Placements', href: 'https://www.aucse.in/placements' },
 		],
 	},
 	{
 		title: 'Research',
 		links: [
-			{ name: 'Research Units', href: 'https://www.aucse.in/research' },
-			{ name: 'Funding', href: 'https://www.aucse.in/funding' },
-			{ name: 'Impact Stories', href: 'https://www.aucse.in/impact' },
+			{ name: 'Media Release', href: 'https://www.aucse.in/media-release' },
+			{ name: 'Blogs', href: 'https://www.aucse.in/blogs' },
+			{ name: 'People', href: 'https://www.aucse.in/people' },
 		],
 	},
 	{
