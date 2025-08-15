@@ -95,12 +95,14 @@ const [facultyMembers, setFacultyMembers] = useState<any[]>([]);
 useEffect(() => {
   const fetchFacultyData = async () => {
     try {
-      const response = await fetch('https://admin-panel-a-ucse.vercel.app/api/fetchFacultyData/?apikey=hello'); // Replace with your actual API endpoint
+      const response = await fetch('https://admin-panel-a-ucse.vercel.app/api/fetchFacultyMemeberData/?apikey=hello'); // Replace with your actual API endpoint
       if (!response.ok) {
         throw new Error('Failed to fetch faculty data');
       }
       const data = await response.json();
-      setFacultyMembers(data);
+      // console.log(data?.data);
+      
+      setFacultyMembers(data?.data);
 
     } catch (error) {
       console.error(error);
@@ -277,7 +279,7 @@ useEffect(() => {
                   <div key={index} className="flex-[0_0_auto] w-96 px-3">
                     <Card
                       className={`border-0 shadow-lg bg-white/90 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:scale-110 group cursor-grab active:cursor-grabbing ${
-                        expandedFaculty.has(faculty.name) ? "h-full" : "h-96"
+                        expandedFaculty.has(faculty.facultyName) ? "h-full" : "h-96"
                       }`}
                     >
                       <CardContent className="p-8">
@@ -286,8 +288,8 @@ useEffect(() => {
                             
                             <div className="h-20 w-20">
                             <Image
-                              src={faculty.image || "/logo.png"}
-                              alt={faculty.name}
+                              src={faculty.imgUrl || "/logo.png"}
+                              alt={faculty.facultyName}
                               width={100}
                               height={100}
                               className="rounded-full aspect-square object-cover border-4 border-blue-600 relative z-10 group-hover:scale-110 transition-transform duration-300"
@@ -296,7 +298,7 @@ useEffect(() => {
                           </div>
                           <div className="flex-1 min-w-0">
                             <h4 className="font-bold text-lg text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">
-                              {faculty.name}
+                              {faculty.facultyName}
                             </h4>
                             <Badge
                               variant="secondary"
@@ -306,20 +308,20 @@ useEffect(() => {
                               Computer Science & Engineering
                             </Badge>
                             <p className="text-sm text-muted-foreground mb-2">
-                              {faculty.designation || "NA"} , Computer Science & Engineering
+                              {faculty.facultyDesignation || "NA"} , Computer Science & Engineering
                             </p>
                             <div className="flex items-center space-x-4 text-xs text-muted-foreground">
                               <span className="flex items-center">
                                 <Star className="h-3 w-3 text-yellow-500 mr-1 group-hover:animate-spin" />
-                                 {faculty.rating || "NA"}
+                                 {faculty.facultyRating || "NA"}
                               </span>
-                              <span>{faculty.publications || "NA"} pubs</span>
+                              <span>{faculty.facultyPublications || "NA"} pubs</span>
                             </div>
                           </div>
                         </div>
 
                         {/* Expanded Content */}
-                        {expandedFaculty.has(faculty.name) && (
+                        {expandedFaculty.has(faculty.facultyName) && (
                           <motion.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
@@ -328,11 +330,11 @@ useEffect(() => {
                             className="mt-4 pt-4 border-t border-gray-100 space-y-3"
                           >
                             {/* Email */}
-                            {faculty.email && (
+                            {faculty.facultyEmail && (
                               <div className="flex items-center gap-2 text-sm">
                                 <Mail className="h-4 w-4 text-gray-400" />
                                 <span className="text-gray-600 truncate">
-                                  {faculty.email}
+                                  {faculty.facultyEmail}
                                 </span>
                               </div>
                             )}
@@ -342,7 +344,7 @@ useEffect(() => {
                               <div className="flex items-center gap-2 text-gray-600">
                                 <span className="font-medium">Experience:</span>
                                 <span className="text-blue-600">
-                                  {faculty.experience || "NA"}
+                                  {faculty.facultyExperience || "NA"}+ years
                                 </span>
                               </div>
                               <div className="flex items-center gap-2 text-gray-600">
@@ -350,7 +352,7 @@ useEffect(() => {
                                   Publications:
                                 </span>
                                 <span className="text-blue-600">
-                                  {faculty.publications || "NA"}
+                                  {faculty.facultyPublications || "NA"}
                                 </span>
                               </div>
                             </div>
@@ -361,7 +363,7 @@ useEffect(() => {
                                 Designation:{" "}
                               </span>
                               <span className="text-gray-900">
-                                {faculty.designation || "NA"}
+                                {faculty.facultyDesignation || "NA"}
                               </span>
                             </div>
 
@@ -373,7 +375,7 @@ useEffect(() => {
                               <div className="flex items-center">
                                 <Star className="h-3 w-3 text-yellow-500 mr-1" />
                                 <span className="text-gray-900">
-                                  {faculty.rating || "NA"}/5.0
+                                  {faculty.facultyRating || "NA"}/5.0
                                 </span>
                               </div>
                             </div>
@@ -386,7 +388,7 @@ useEffect(() => {
                               Experience
                             </span>
                             <span className="font-semibold text-blue-600">
-                              {faculty.experience || "NA"}
+                              {faculty.facultyExperience || "NA"}+ years
                             </span>
                           </div>
                           <div className="flex justify-between items-center text-sm mt-2">
@@ -394,7 +396,7 @@ useEffect(() => {
                               Designation
                             </span>
                             <span className="font-semibold text-gray-900 text-right">
-                              {faculty.designation || "NA"}
+                              {faculty.facultyDesignation || "NA"}
                             </span>
                           </div>
 
@@ -402,13 +404,13 @@ useEffect(() => {
                           <Button
                             onClick={(e) => {
                               e.stopPropagation();
-                              toggleFacultyExpansion(faculty.name);
+                              toggleFacultyExpansion(faculty.facultyName);
                             }}
                             variant="outline"
                             size="sm"
                             className="w-full mt-3 text-xs"
                           >
-                            {expandedFaculty.has(faculty.name)
+                            {expandedFaculty.has(faculty.facultyName)
                               ? "Show Less"
                               : "Show More"}
                           </Button>

@@ -75,7 +75,7 @@ export function NewsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {ApiAwardAndAchivement.map((item, index) => (
             <Card
-              key={item.id}
+              key={index}
               className="group relative overflow-hidden border-0 bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
             >
               <CardContent className="p-0 h-full">
