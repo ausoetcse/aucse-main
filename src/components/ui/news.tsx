@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import {
   MinimalCard,
   MinimalCardDescription,
+  MinimalCardFooter,
   MinimalCardImage,
   MinimalCardTitle,
 } from "@/components/ui/minimal-card"
@@ -47,7 +48,7 @@ export function NewsSection() {
         setLoading(true);
         setApiError(null);
         
-        const response = await fetch(`https://admin-panel-aucse.vercel.app/api/fetchAwardAndAchievementData/?apikey=hello&filter={"number":3}`);
+        const response = await fetch(`https://admin-panel-aucse.vercel.app/api/fetchAwardAndAchievementData/?apikey=hello&filter={"number":6}`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -78,23 +79,25 @@ export function NewsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="w-full flex justify-center items-center gap-2 mb-12 flex-col lg:flex-row">
           {ApiAwardAndAchivement.map((item, index) => (
-            <MinimalCard className="m-2 max-w-[460px]" key={item.id || index}>
+            <MinimalCard className="m-2 w-[300px] h-full  " key={item.id || index}>
               <MinimalCardImage
-                className="h-[300px] w-full object-cover"
+                className=" w-full object-cover"
                 src={item.imgUrl?.[0] || "/placeholder.svg"}
                 alt={item.programmeName}
               />
               <div className="w-full h-10">
               <MinimalCardTitle>{item.programmeName}</MinimalCardTitle>
               </div>
-              <MinimalCardDescription>
-                {item.description}
-              </MinimalCardDescription>
-              <div className="items-center w-full flex justify-end px-4">
+              <MinimalCardFooter className="items-center w-full flex justify-end px-2 mt-5 gap-2">
+                <Calendar className="w-4 h-4" />
+                <a href={item.dateOfProgramme} target="_blank" rel="noopener noreferrer" className="font-ubuntu text-sm font-bold">{item.dateOfProgramme}</a>
+              </MinimalCardFooter>
+                {/* <div className="items-center w-full flex justify-end px-2  mt-4">
                 <a href={item.link} target="_blank" rel="noopener noreferrer" className="font-ubuntu text-sm text-blue-400 hover:underline hover:text-blue-700 cursor-pointer transition-all duration-300 ease-linear">Read More</a>
                 </div>
+  */}
             </MinimalCard>
    
           ))}

@@ -30,14 +30,12 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
 
   const imagesToPreload = [
     // Banner Images
-    "/banner1.png",
-    "/banner1.svg",
-    "/banner2.png",
-    "/banner3.jpg",
-    "/banner4.png",
-    "/banner5.jpg",
-    "/banner5.png",
-    "/banner7.png",
+    "/banners/banner-1.jpg?height=400&width=900",
+    "/banners/banner-2.jpg?height=400&width=900",
+    "/banners/banner-3.jpg?height=400&width=900",
+    "/banners/banner-4.jpg?height=400&width=900",
+    "/banners/banner-5.jpg?height=400&width=900",
+
     
     // Gallery Images
     "/1.jpg",
@@ -49,22 +47,22 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
     "/7.jpg",
     
     // Company Logos
-    "/adobe.png",
-    "/amazon.png",
-    "/apple.png",
-    "/facebook.png",
-    "/google.png",
-    "/instagram.png",
-    "/linkedin.png",
-    "/meta.png",
-    "/microsoft.png",
-    "/netflix.png",
-    "/tcs.png",
-    "/youtube.png",
+    "/placement/adobe.png",
+    "/placement/amazon.png",
+    "/placement/apple.png",
+    "/placement/facebook.png",
+    "/placement/google.png",
+    "/placement/instagram.png",
+    "/placement/linkedin.png",
+    "/placement/meta.png",
+    "/placement/microsoft.png",
+    "/placement/netflix.png",
+    "/placement/tcs.png",
+    "/placement/youtube.png",
     
     // University Assets
     "/logo.png",
-    "/naac.jpg",
+    "/naac_a.png",
     "/carousel.jpg",
     "/course-video.mp4",
     
