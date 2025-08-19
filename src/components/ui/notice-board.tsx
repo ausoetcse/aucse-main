@@ -493,10 +493,10 @@ export default function NoticeBoard() {
                 </div>
 
                 {/* Date Range */}
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Label className="text-sm font-medium">Date Range</Label>
-                  <div className="space-y-2 flex items-start flex-col lg:flex-row justify-between w-full gap-5">
-                    <div className="">
+                  <div className="space-y-1 flex flex-1 items-start flex-col  justify-between gap-2 ">
+                    <div className="w-full">
                     <Label className="space-y-1 py-1 text-muted-foreground">From</Label>
                     <Input
                       type="date"
@@ -505,7 +505,7 @@ export default function NoticeBoard() {
                       onChange={(e) => setFilters((prev) => ({ ...prev, dateFrom: e.target.value }))}
                     />
                     </div>
-                    <div className="">
+                    <div className="w-full">
                     <Label className="space-y-1 py-1 text-muted-foreground">To</Label>
                     <Input
                       type="date"

@@ -137,7 +137,7 @@ export default function AboutUs1() {
                   Our Mission
                 </h2>
 
-                <p className="text-lg  text-muted-foreground font-ubuntu text-wrap leading-tight justify-center items-center text-start flex-1 ">
+                <p className="text-lg  text-muted-foreground font-ubuntu leading-tight  items-center text-justify flex-1 ">
                   {aboutData.mission}
                 </p>
               </div>
@@ -161,7 +161,7 @@ export default function AboutUs1() {
                 Our Vision
               </h2>
 
-              <p className="text-lg leading-tight text-muted-foreground font-ubuntu text-wrap items-center flex-1 text-start ">
+              <p className="text-lg leading-tight text-muted-foreground font-ubuntu text-justify items-center flex-1  ">
                 {aboutData.vision}
               </p>
             </motion.div>

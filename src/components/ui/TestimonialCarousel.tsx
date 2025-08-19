@@ -128,7 +128,7 @@ const testimonials: Testimonial[] = [
 ];
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
-  <div className="bg-blue-600 rounded-xl p-4 min-h-[220px] shadow-sm ">
+  <div className="bg-neutral-100/10 border-2 border-blue-800 rounded-xl p-4 min-h-[180px] shadow-sm ">
     <div className="flex items-center gap-4 mb-3">
       <img
         src={testimonial.image}
@@ -136,8 +136,8 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
         className="w-12 h-12 rounded-full object-cover"
       />
       <div>
-        <h3 className="font-semibold text-white">{testimonial.name}</h3>
-        <p className="text-sm text-white/80">{testimonial.title}</p>
+        <h3 className="font-semibold text-blue-900">{testimonial.name}</h3>
+        <p className="text-sm text-zinc-200/80">{testimonial.title}</p>
       </div>
     </div>
     <p className="text-white">{testimonial.message}</p>
@@ -225,10 +225,10 @@ const TestimonialCarousel: React.FC = () => {
   }, [slider.current]);
 
   return (
-    <section className="px-4 py-10 bg-gradient-to-b to-[#7e96ff] from-[#eff4f5]">
-      <div className="max-w-8xl mx-auto ">
-        <h2 className="scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance font-special-gothic">What our Student Says</h2>
-        <p className="text-zinc-900 text-sm leading-none p-5 mb-4 font-ubuntu">
+    <section className="px-2 py-10 bg-gradient-to-b to-[#001885] from-[#ffffff]">
+      <div className="max-w-8xl mx-auto text-justify">
+        <h2 className="scroll-m-20 text-center text-5xl font-extrabold tracking-tight  font-special-gothic">What our Student Says</h2>
+        <p className="text-zinc-900 text-sm leading-start p-5 mb-4 font-ubuntu">
           Discover the voices of Adamas University. Our students share how
           academic rigor, mentorship, and real-world exposure helped shape their
           personal and professional journeys. Their stories reflect the vibrant

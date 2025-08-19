@@ -34,6 +34,8 @@ import {
   ArrowRight, 
   Bell,
   ArrowUp,
+  X,
+  Menu,
 } from "lucide-react"
 import NoticeBoard from "@/components/ui/notice-board"
 import { GallerySection } from "@/components/ui/gallery"
@@ -48,6 +50,7 @@ import WrapButton from "@/components/ui/wrap-button"
 
 export default function HomePage() {
   const [showBackToTop, setShowBackToTop] = useState(false)
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,14 +98,12 @@ export default function HomePage() {
 
   ]
 
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
-  
+
   // Enhanced dropdown menu items organized in three grids
   const dropdownSections = [
     {
       title: "Academic",
-      gradient: "from-indigo-600 to-indigo-800",
+      gradient: "from-neutral-600/10 to-white/20 border-2",
       items: [
         {
           name: "Faculty",
@@ -127,7 +128,7 @@ export default function HomePage() {
     },
     {
       title: "Student Life",
-      gradient: "from-blue-600 to-blue-800",
+      gradient: "from-neutral-600/10 to-white/20 border-2",
       items: [
         {
           name: "Alumni",
@@ -147,7 +148,7 @@ export default function HomePage() {
     },
     {
       title: "Resources",
-      gradient: "from-green-400 to-green-600",
+      gradient: "from-neutral-600/10 to-white/20 border-2",
       items: [
         { name: "Explore", link: "https://www.aucse.in/more", icon: Globe, description: "Discover more features" },
         { name: "Our Team", link: "./dev", icon: Users, description: "Development team" },
@@ -163,122 +164,120 @@ export default function HomePage() {
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
-          <div className="flex items-center space-x-1">
-            <NavItems items={navItems} />
+          <NavItems items={navItems} />
            {/* Enhanced More Dropdown */}
            <div className="relative top-0 right-0 items-center ">
-              <button
-                onMouseEnter={() => setIsMoreDropdownOpen(true)}
-                onMouseLeave={() => setIsMoreDropdownOpen(false)}
-                className="flex items-center text-neutral-600 dark:text-neutral-300 hover:text-blue-600 transition-colors duration-200 py-2"
-              >
-                <NavbarButton variant="primary" className="font-normal"><WrapButton>More</WrapButton></NavbarButton>
 
-                  {/* <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /> */}
-        
-              </button>
-              <AnimatePresence>
-                {isMoreDropdownOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -20, scale: 0.95 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    onMouseEnter={() => setIsMoreDropdownOpen(true)}
-                    onMouseLeave={() => setIsMoreDropdownOpen(false)}
-                    className="absolute top-full right-0 mt-4 w-[700px] bg-white dark:bg-neutral-900 rounded-2xl shadow-2xl overflow-hidden z-50"
-                  >
-                    {/* Header */}
-                    <div className="bg-zinc-900  p-6 text-white flex flex-col">
-                      <h3 className="text-xl font-bold mb-2">Explore More</h3>
-                      <p className="text-blue-100 text-sm">Discover all the resources and opportunities available</p>
-                    </div>
-
-                    {/* Three Grid Sections */}
-                    <div className="grid grid-cols-3 gap-0">
-                      {dropdownSections.map((section, sectionIndex) => (
-                        <motion.div
-                          key={section.title}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: sectionIndex * 0.1 }}
-                          className="p-6 border-r border-neutral-200 dark:border-neutral-700 last:border-r-0"
-                        >
-                          {/* Section Header */}
-                          <div className={`bg-gradient-to-r ${section.gradient} p-3 rounded-lg mb-4`}>
-                            <h4 className="text-white font-semibold text-sm text-center">{section.title}</h4>
-                          </div>
-
-                          {/* Section Items */}
-                          <div className="space-y-3">
-                            {section.items.map((item, itemIndex) => (
-                              <motion.a
-                                key={item.name}
-                                href={item.link}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: sectionIndex * 0.1 + itemIndex * 0.05 }}
-                                className="group flex items-start space-x-3 p-3 rounded-xl hover:bg-gradient-to-r hover:from-neutral-50 hover:to-neutral-100 dark:hover:from-neutral-800 dark:hover:to-neutral-700 transition-all duration-300 transform hover:scale-[1.02]"
-                              >
-                                <div
-                                  className={`p-2 rounded-lg bg-gradient-to-r ${section.gradient} group-hover:scale-110 transition-transform duration-300`}
-                                >
-                                  <item.icon className="h-4 w-4 text-white" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="flex items-center justify-between">
-                                    <h5 className="font-medium text-neutral-900 dark:text-neutral-100 text-sm group-hover:text-blue-600 transition-colors">
-                                      {item.name}
-                                    </h5>
-                                    <ChevronRight className="h-3 w-3 text-neutral-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-300" />
-                                  </div>
-                                  <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1 leading-tight">
-                                    {item.description}
-                                  </p>
-                                </div>
-                              </motion.a>
-                            ))}
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-
-                    {/* Footer */}
-                    <div className="bg-zinc-900  p-4 text-center">
-                      <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                        Need help?{" "}
-                        <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
-                          Contact Support
-                        </a>
-                      </p>
-                    </div>
-                  </motion.div>
-                )}    
-              </AnimatePresence>
-              </div>
+            
+            <button 
+              onClick={() => setIsDrawerOpen(true)}
+              className="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
               </div>
         </NavBody>
 
         {/* Mobile Navigation */}
         <MobileNav>
           <MobileNavHeader>
+
             <NavbarLogo />
-            <MobileNavToggle isOpen={isMobileMenuOpen} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
+            <button
+              onClick={() => setIsDrawerOpen(true)}
+              className="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-gray-600 dark:hover:text-white" 
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+           
           </MobileNavHeader>
-          <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
-            {navItems.map((item, idx) => (
-              <a
-                key={`mobile-link-${idx}`}
-                href={item.link}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
-              >
-                <span className="block">{item.name}</span>
-              </a>
-            ))}
-          </MobileNavMenu>
+          
         </MobileNav>
       </Navbar>
+
+
+
+      {/* Drawer Sidebar with outside click handler */}
+      <AnimatePresence>
+        {isDrawerOpen && (
+          <>
+            {/* Overlay for outside click */}
+            <motion.div
+              key="drawer-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black z-40 cursor-pointer"
+              onClick={() => setIsDrawerOpen(false)}
+            />
+            {/* Drawer */}
+            <motion.aside
+              key="drawer"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'tween', duration: 0.35 }}
+              className="fixed top-0 right-0 h-full w-full max-w-md bg-white dark:bg-neutral-900 shadow-2xl z-50 flex flex-col"
+              tabIndex={-1}
+              role="dialog"
+              aria-modal="true"
+            >
+              {/* Drawer Header */}
+              <div className="flex justify-between items-center mb-6 p-4 border-b border-neutral-200 dark:border-neutral-700">
+                <h5 className="text-base font-semibold text-gray-600 uppercase dark:text-gray-400">
+                  Explore More
+                </h5>
+                <button
+                  onClick={() => setIsDrawerOpen(false)}
+                  className="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-gray-600 dark:hover:text-white"
+                  aria-label="Close Sidebar"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              {/* Drawer Content (reusing your dropdownSections grid) */}
+              <div className="space-y-6 p-4 flex-1 overflow-y-auto">
+                {dropdownSections.map((section, sectionIndex) => (
+                  <div key={section.title} className="pb-4 border-b border-neutral-200 dark:border-neutral-700 last:border-0">
+                    <div className={`bg-gradient-to-r ${section.gradient} p-3 rounded-lg mb-3`}>
+                      <h4 className="text-zinc-900 font-semibold text-sm">{section.title}</h4>
+                    </div>
+                    <div className="space-y-2">
+                      {section.items.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.link}
+                          className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gradient-to-r hover:from-neutral-50 hover:to-neutral-100 dark:hover:from-neutral-800 dark:hover:to-neutral-700 transition-all"
+                          onClick={() => setIsDrawerOpen(false)}
+                        >
+                          <div className={`p-2 rounded-lg bg-gradient-to-r ${section.gradient}`}>
+                            <item.icon className="h-4 w-4 text-zinc-900" />
+                          </div>
+                          <div>
+                            <h5 className="font-medium text-neutral-900 dark:text-neutral-100 text-sm">
+                              {item.name}
+                            </h5>
+                            <p className="text-xs text-neutral-500 dark:text-neutral-400">{item.description}</p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* Drawer Footer */}
+              <div className="mt-6 text-center text-xs text-neutral-500 dark:text-neutral-400 p-4">
+                Need help?{" "}
+                <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
+                  Contact Support
+                </a>
+              </div>
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
+
 
       {/* Hero */}
       <div className="h-auto mt-0 top-0 relative flex justify-center items-center w-full">
