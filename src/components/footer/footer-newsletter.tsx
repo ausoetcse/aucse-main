@@ -3,7 +3,8 @@
 import { IconBrandGoogleMaps } from "@tabler/icons-react";
 import { Instagram, Linkedin, Youtube, Facebook, Phone } from "lucide-react";
 import Image from "next/image";
-
+import { toast } from "sonner";
+import React from "react";
 const footerColumns = [
 	{
 		title: 'Explore',
@@ -57,6 +58,39 @@ const socialIcons = [
 ];
 
 export default function FooterNewsletter() {
+	const [result, setResult] = React.useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+
+    formData.append("access_key", "be01cf84-0963-4f00-871a-e4de12fbcdaf");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+      console.log("Success", data);
+      toast.success("Success!", {
+        description: "Thank you for reaching out. We'll get back to you soon.",
+        duration: 4000
+      });
+    } else {
+      console.log("Error", data);
+      setResult(data.message);
+      toast.error("Failed to Send", {
+        description: data.message || "Something went wrong. Please try again.",
+        duration: 5000
+      });
+    }
+  };
 	return (
 		<footer className="relative w-full pb-10 pt-20 bg-zinc-900 text-white">
 			<div className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full overflow-hidden">
@@ -75,21 +109,25 @@ export default function FooterNewsletter() {
 								Join thousands of students and professionals who trust Adamas University for cutting-edge education and career opportunities.
 							</p>
 							<div className="flex flex-col gap-4 sm:flex-row">
+							<form className="flex flex-col gap-4 sm:flex-row" onSubmit={onSubmit}>
 								<input
 									type="email"
+									name="email"
+									required
 									placeholder="Enter your email"
 									className="rounded-lg border border-zinc-600 bg-zinc-800 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400 font-ubuntu"
 								/>
-								<button className="rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 font-medium shadow-lg shadow-blue-600/20 transition hover:shadow-blue-600/30 hover:scale-105 font-ubuntu">
-									Contact Now
+								<button type="submit" className="rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 font-medium shadow-lg shadow-blue-600/20 transition hover:shadow-blue-600/30 hover:scale-105 font-ubuntu">
+									Subscribe
 								</button>
+							</form>
 							</div>
 						</div>
 						<div className="hidden justify-end md:flex">
 							<div className="relative">
 								<div className="absolute inset-0 rotate-6 rounded-xl " />
 								<Image
-									src="/logo.png"
+									src="/logo_op.png"
 									alt="Adamas University"
 									width={300}
 									height={200}
