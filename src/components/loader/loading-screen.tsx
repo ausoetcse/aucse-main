@@ -32,6 +32,7 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
 
   const loadingMessages = [
     "Loading Assets... ",
+
     "Welcome To Department of CSE",
   ]
 
@@ -132,7 +133,7 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
 
     const messageInterval = setInterval(() => {
       setCurrentMessage((prev) => (prev + 1) % loadingMessages.length)
-    }, 1000)
+    }, 5000)
 
     return () => clearInterval(messageInterval)
   }, [isLoading])
