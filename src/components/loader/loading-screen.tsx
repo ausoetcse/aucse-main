@@ -166,8 +166,8 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
               
          
               </div>
-              <h1 className="text-4xl font-bold text-gray-800 mb-2 tracking-wide font-special-gothic" >ADAMAS UNIVERSITY</h1>
-              <p className="text-gray-600 text-sm tracking-wide font-medium font-ubuntu">Department of Computer Science & Engineering</p>
+              <h1 className="text-4xl font-bold text-gray-800 mb-2 tracking-wide font-special-gothic text-center" >ADAMAS UNIVERSITY</h1>
+              <p className="text-gray-600 text-sm tracking-wide font-medium font-ubuntu text-center">Department of Computer Science & Engineering</p>
           
 
             {/* Main Content */}
