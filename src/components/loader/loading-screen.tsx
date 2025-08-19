@@ -31,14 +31,7 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
   const [isFirstVisit, setIsFirstVisit] = useState(true)
 
   const loadingMessages = [
-    "Loading University Assets...",
-    "Preloading Banner Images...",
-    "Loading Company Logos...",
-    "Initializing Gallery Content...",
-    "Loading Media Files...",
-    "Preparing University Portal...",
-    "Loading SVG Icons...",
-    "Initializing Animations...",
+    "Loading Assets... ",
     "Welcome To Department of CSE",
   ]
 
@@ -162,35 +155,19 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
 
           <div className="relative w-full max-w-2xl px-8">
             {/* Logo Section */}
-            <motion.div 
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
+
               <div className="relative w-56 h-56 mx-auto mb-8 flex items-center justify-center">
-                <motion.div
-                  className="relative w-44 h-44 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/30 flex items-center justify-center z-20"
-                  animate={isLoading ? { scale: [1, 1.08, 1], boxShadow: [
-                    "0 0 0 0 #6366f1aa", "0 0 24px 8px #6366f1aa", "0 0 0 0 #6366f1aa"
-                  ] } : {}}
-                  transition={{ duration: 2.2, repeat: isLoading ? Infinity : 0, ease: "easeInOut" }}
-                >
                   <img
                     src="/logo.png"
                     alt="University Logo"
                     className="w-32 h-32 object-contain"
                   />
-                </motion.div>
-                <motion.div
-                  className="absolute w-44 h-44 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-600 opacity-20 blur-2xl z-10"
-                  animate={isLoading ? { scale: [1, 1.12, 1] } : {}}
-                  transition={{ duration: 2.2, repeat: isLoading ? Infinity : 0, ease: "easeInOut" }}
-                />
+              
+         
               </div>
               <h1 className="text-4xl font-bold text-gray-800 mb-2 tracking-wide font-special-gothic" >ADAMAS UNIVERSITY</h1>
               <p className="text-gray-600 text-sm tracking-wide font-medium font-ubuntu">Department of Computer Science & Engineering</p>
-            </motion.div>
+          
 
             {/* Main Content */}
             <div className="space-y-12">
