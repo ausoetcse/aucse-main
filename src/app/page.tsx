@@ -3,7 +3,7 @@
 import { useState } from "react"
 
 import HomePage from "./home/page";
-import { LoadingScreen } from "@/components/ui/loading-screen";
+import { LoadingScreen } from "@/components/loader/loading-screen";
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true)
     const handleLoadComplete = () => {

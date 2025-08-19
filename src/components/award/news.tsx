@@ -79,9 +79,9 @@ export function NewsSection() {
           </p>
         </div>
 
-        <div className="w-full flex justify-center items-center gap-2 mb-12 flex-col lg:flex-row">
+        <div className="w-full flex justify-center items-center gap-2 mb-8 flex-col lg:flex-row">
           {ApiAwardAndAchivement.map((item, index) => (
-            <MinimalCard className="m-2 w-[300px] h-full  " key={item.id || index}>
+            <MinimalCard className="m-2 w-[300px] h-full cursor-pointer" key={item.id || index}>
               <MinimalCardImage
                 className=" w-full object-cover"
                 src={item.imgUrl?.[0] || "/placeholder.svg"}
@@ -90,14 +90,13 @@ export function NewsSection() {
               <div className="w-full h-10">
               <MinimalCardTitle>{item.programmeName}</MinimalCardTitle>
               </div>
-              <MinimalCardFooter className="items-center w-full flex justify-end px-2 mt-5 gap-2">
-                <Calendar className="w-4 h-4" />
-                <a href={item.dateOfProgramme} target="_blank" rel="noopener noreferrer" className="font-ubuntu text-sm font-bold">{item.dateOfProgramme}</a>
+              <MinimalCardFooter className="items-center w-full flex justify-end px-2 mt-5 gap-2 ">
+
+                <Calendar className="w-3 h-3 text-muted-foreground" />
+                <span className="text-[12px] font-monsterrat font-semibold text-muted-foreground ">{item.dateOfProgramme}</span>
               </MinimalCardFooter>
-                {/* <div className="items-center w-full flex justify-end px-2  mt-4">
-                <a href={item.link} target="_blank" rel="noopener noreferrer" className="font-ubuntu text-sm text-blue-400 hover:underline hover:text-blue-700 cursor-pointer transition-all duration-300 ease-linear">Read More</a>
-                </div>
-  */}
+  
+
             </MinimalCard>
    
           ))}

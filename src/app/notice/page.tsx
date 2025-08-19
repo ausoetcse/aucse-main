@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Users, Zap, Target, ChevronDown, ChevronUp, Search, Sparkles, ArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
-import FooterNewsletter from "@/components/mvpblocks/footer-newsletter";
+import FooterNewsletter from "@/components/footer/footer-newsletter";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";

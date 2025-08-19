@@ -10,14 +10,14 @@ import {
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
-} from "@/components/ui/resizable-navbar"
-import BannerSlider from "@/components/ui/banner"
+} from "@/components/navbar/resizable-navbar"
+import BannerSlider from "@/components/banner/banner"
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import Component from "@/components/ui/university-section"
-import TestimonialCarousel from "@/components/ui/TestimonialCarousel"
+import Component from "@/components/faculty/university-section"
+import TestimonialCarousel from "@/components/testimonial/TestimonialCarousel"
 import {
   GraduationCap,
   Calendar,
@@ -37,11 +37,11 @@ import {
   X,
   Menu,
 } from "lucide-react"
-import NoticeBoard from "@/components/ui/notice-board"
+import NoticeBoard from "@/components/notice_board/notice-board"
 import { GallerySection } from "@/components/ui/gallery"
-import { NewsSection } from "@/components/ui/news"
-import AboutUs1 from "@/components/ui/about-us-1"
-import FooterNewsletter from "@/components/mvpblocks/footer-newsletter"
+import { NewsSection } from "@/components/award/news"
+import AboutUs1 from "@/components/about/about-us-1"
+import FooterNewsletter from "@/components/footer/footer-newsletter"
 import { ScrollAnimation, StaggeredAnimation, ParallaxScroll, ScrollCounter } from "@/components/ui/scroll-animation"
 import WrapButton from "@/components/ui/wrap-button"
 

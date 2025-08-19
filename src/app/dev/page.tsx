@@ -10,7 +10,7 @@ import { Github, Linkedin, Twitter, Mail, MapPin, Calendar, Code, Palette, Serve
 import Image from "next/image"
 import { motion, AnimatePresence } from "motion/react"
 import { ScrollAnimation, StaggeredAnimation } from "@/components/ui/scroll-animation"
-import FooterNewsletter from "@/components/mvpblocks/footer-newsletter"
+import FooterNewsletter from "@/components/footer/footer-newsletter"
 
 type TeamMember = {
   id: string
