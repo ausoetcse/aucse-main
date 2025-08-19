@@ -269,7 +269,7 @@ export default function HomePage() {
               {/* Drawer Footer */}
               <div className="mt-6 text-center text-xs text-neutral-500 dark:text-neutral-400 p-4">
                 Need help?{" "}
-                <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
+                <a href="/contact" className="text-blue-600 hover:text-blue-700 font-medium">
                   Contact Support
                 </a>
               </div>
