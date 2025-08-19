@@ -82,7 +82,7 @@ export function NewsSection() {
           {ApiAwardAndAchivement.map((item, index) => (
             <MinimalCard className="m-2 max-w-[460px]" key={item.id || index}>
               <MinimalCardImage
-                className="h-full"
+                className="h-[300px] w-full object-cover"
                 src={item.imgUrl?.[0] || "/placeholder.svg"}
                 alt={item.programmeName}
               />
