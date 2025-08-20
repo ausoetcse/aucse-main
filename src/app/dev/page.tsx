@@ -11,6 +11,7 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "motion/react"
 import { ScrollAnimation, StaggeredAnimation } from "@/components/ui/scroll-animation"
 import FooterNewsletter from "@/components/footer/footer-newsletter"
+import Navigation from "@/components/navbar/navbar"
 
 type TeamMember = {
   id: string
@@ -245,29 +246,7 @@ const teamData: TeamMember[] = [
     color: "from-blue-900 via-blue-800 to-blue-700",
     specialty: "Creative Design"
   },
-    {
-    id: "8",
-    name: "Sneha Bhowmick",
-    role: "UI/UX Designer",
-    designation: "Designer",
-    year: "2023",
-    image: "/placeholder.svg?height=200&width=200&text=Pratyasha",
-    fullImage: "/placeholder.svg?height=600&width=400&text=Pratyasha+Banik",
-    group: "design",
-    bio: "Creative designer with a keen eye for user experience and modern design principles. Specializes in creating intuitive and beautiful interfaces.",
-    skills: ["Figma", "Adobe Creative Suite", "User Research", "Prototyping", "Design Systems", "Illustration"],
-    social: {
-      linkedin: "#",
-      twitter: "#",
-      email: "sneha@example.com",
-    },
-    location: "Kolkata, India",
-    experience: "2 years",
-    achievements: ["Design Excellence Award", "UX Research Certified", "Dribbble Featured Designer"],
-    quote: "Good design is invisible, great design is unforgettable.",
-    color: "from-blue-900 via-blue-800 to-blue-700",
-    specialty: "Creative Design"
-  },
+
 ]
 
 const groups = [
@@ -329,10 +308,11 @@ export default function TeamPortfolio() {
         </div>
       </div>
 
-      <div className="relative z-10">
+      <div className="z-10">
+        <Navigation/>
         {/* Hero Header */}
         <ScrollAnimation animation="slideDown">
-          <header className="relative overflow-hidden">
+          <header className="relative overflow-hidden mt-[9vh]">
             <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-gray-800 to-slate-800"></div>
             <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20"></div>
             <div className="relative max-w-7xl mx-auto px-6 py-20">
@@ -367,14 +347,14 @@ export default function TeamPortfolio() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto"
                 >
-                  The brilliant minds behind Adamas University's Department of Computer Science
+                  The brilliant minds behind Adamas University Department of Computer Science
                 </motion.p>
 
                 <motion.div
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
-                  className="flex justify-center gap-4"
+                  className="flex justify-center gap-4 flex-col md:flex-row"
                 >
                   <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
                     <Users className="h-5 w-5" />
@@ -524,7 +504,7 @@ export default function TeamPortfolio() {
                                 </p>
 
                                 {/* Skills */}
-                                <div className="flex flex-wrap gap-2 mb-6 justify-center">
+                                <div className="flex flex-wrap gap-2 mb-6 justify-center ">
                                   {member.skills.slice(0, 3).map((skill) => (
                                     <Badge
                                       key={skill}
@@ -648,7 +628,7 @@ export default function TeamPortfolio() {
                         {/* Quote */}
                         {selectedMember.quote && (
                           <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-2xl border-l-4 border-blue-500">
-                            <p className="text-slate-700 font-medium italic text-xl">"{selectedMember.quote}"</p>
+                            <p className="text-slate-700 font-medium italic text-xl">`{selectedMember.quote}`</p>
                           </div>
                         )}
 

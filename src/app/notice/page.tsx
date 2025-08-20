@@ -92,8 +92,10 @@ export default function MainPage() {
 
   return (
     <>
-      <div className="relative z-10">
+      <div className=" z-10">
+        
         <Navigation />
+        
               {/* Hero Header */}
               <ScrollAnimation animation="slideDown">
                 <header className="relative overflow-hidden mt-[9vh]">
