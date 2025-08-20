@@ -81,7 +81,7 @@ export default function HomePage() {
     },
     {
       name: "Events",
-      link: "https://aucse-awards-achievements.vercel.app/",
+      link: "/achievements",
     },
     {
       name: "Calendar",

@@ -39,7 +39,7 @@ export default function MainPage() {
   useEffect(() => {
     async function fetchNotices() {
       try {
-        const res = await fetch("https://admin-panel-a-ucse.vercel.app/api/fetchNoticeBoardData/?apikey=hello");
+        const res = await fetch("https://admin-panel-aucse.vercel.app/api/fetchNoticeBoardData/?apikey=hello");
         const data: RawApiNotice[] | { data: RawApiNotice[] } = await res.json();
 
         const rawArray: RawApiNotice[] = Array.isArray(data)

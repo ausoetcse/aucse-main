@@ -95,7 +95,7 @@ const [facultyMembers, setFacultyMembers] = useState<any[]>([]);
 useEffect(() => {
   const fetchFacultyData = async () => {
     try {
-      const response = await fetch('https://admin-panel-a-ucse.vercel.app/api/fetchFacultyMemeberData/?apikey=hello'); // Replace with your actual API endpoint
+      const response = await fetch('https://admin-panel-aucse.vercel.app/api/fetchFacultyMemeberData/?apikey=hello'); // Replace with your actual API endpoint
       if (!response.ok) {
         throw new Error('Failed to fetch faculty data');
       }

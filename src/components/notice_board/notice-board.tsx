@@ -129,7 +129,7 @@ export default function NoticeBoard() {
         setLoading(true)
         setApiError(null)
 
-        const res = await fetch("https://admin-panel-a-ucse.vercel.app/api/fetchNoticeBoardData/?apikey=hello", {
+        const res = await fetch("https://admin-panel-aucse.vercel.app/api/fetchNoticeBoardData/?apikey=hello", {
           signal: controller.signal,
         })
 

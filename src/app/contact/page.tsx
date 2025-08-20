@@ -118,7 +118,7 @@ export default function ContactPage() {
         <section className="flex-1 p-8 md:p-12 flex flex-col justify-center bg-[#fafbfc]">
           <form className="w-full max-w-lg mx-auto space-y-8" onSubmit={onSubmit}>
             <h2 className="text-2xl font-bold mb-2 text-gray-900 tracking-tight">Say hello</h2>
-            <p className="text-gray-500 mb-6 text-base">We'd love to hear from you. Fill out the form and our team will get back to you soon.</p>
+            <p className="text-gray-500 mb-6 text-base">We would love to hear from you. Fill out the form and our team will get back to you soon.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <Label htmlFor="name" className="font-medium">Name</Label>
