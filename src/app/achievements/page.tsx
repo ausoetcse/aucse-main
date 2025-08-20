@@ -6,8 +6,12 @@ import { motion } from 'framer-motion';
 import { Trophy, Calendar } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
 import { Session } from '@/types';
-import { Navbar } from '@/components/navbar/resizable-navbar';
+import { ScrollAnimation } from '@/components/ui/scroll-animation';
 import Navigation from '@/components/navbar/navbar';
+import Image from 'next/image';
+import { Users, Zap, Target, ChevronDown, ChevronUp, Search, Sparkles, ArrowLeft } from "lucide-react";
+import FooterNewsletter from '@/components/footer/footer-newsletter';
+import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
 
 const Achievements: React.FC = () => {
   const router = useRouter();
@@ -73,13 +77,74 @@ const Achievements: React.FC = () => {
   }
 
   return (
-    <div className='min-h-screen w-full  '>
-        <Navigation />
+
         
-    <div className="overflow-x-hidden min-h-full w-full text-white overflow-y-auto mt-[9vh] pb-[10vh] fixed inset-0 bg-gradient-to-b from-blue-600 via-white to-gray-200">
-      {/* Header */}
+    <div className="overflow-x-hidden min-h-full w-full text-white  fixed inset-0 ">
+      {/* Header */}<Navigation />
+                    <ScrollAnimation animation="slideDown">
+                      <header className="relative overflow-hidden mt-[9vh]">
+                        <div className=" absolute inset-0 bg-gradient-to-br from-zinc-900 via-gray-800 to-slate-800"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20"></div>
+                        <div className="relative max-w-7xl mx-auto px-6 py-20">
+                          <div className="text-center text-white">
+                            <motion.div
+                              initial={{ scale: 0.8, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 1 }}
+                              transition={{ duration: 0.8 }}
+                              className="mb-8"
+                            >
+                              <Image
+                                src="/logo.png"
+                                alt="Adamas Logo"
+                                width={120}
+                                height={120}
+                                className="mx-auto h-24 w-24 object-contain drop-shadow-2xl"
+                              />
+                            </motion.div>
+                            
+                            <motion.h1
+                              initial={{ y: 50, opacity: 0 }}
+                              animate={{ y: 0, opacity: 1 }}
+                              transition={{ duration: 0.8, delay: 0.2 }}
+                              className="text-6xl font-bold mb-4 bg-gradient-to-r from-white via-gray-100 to-zinc-100 bg-clip-text text-transparent flex justify-center items-center"
+                            >
+                              Awards and Achievements
+                            </motion.h1>
+                            
+                            <motion.p
+                              initial={{ y: 50, opacity: 0 }}
+                              animate={{ y: 0, opacity: 1 }}
+                              transition={{ duration: 0.8, delay: 0.4 }}
+                              className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto"
+                            >
+                              Awards and achievements are a testament to our commitment to excellence and innovation.
+                            </motion.p>
+            
+                            <motion.div
+                              initial={{ y: 50, opacity: 0 }}
+                              animate={{ y: 0, opacity: 1 }}
+                              transition={{ duration: 0.8, delay: 0.6 }}
+                              className="flex justify-center gap-4"
+                            >
+                              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                                <Sparkles className="h-5 w-5" />
+                                <span className="font-medium">Creative Minds</span>
+                              </div>
+                              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                                <Zap className="h-5 w-5" />
+                                <span className="font-medium">Innovation Driven</span>
+                              </div>
+                              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                                <Target className="h-5 w-5" />
+                                <span className="font-medium">Excellence Focused</span>
+                              </div>
+                            </motion.div>
+                          </div>
+                        </div>
+                      </header>
+                    </ScrollAnimation>
  
-      <motion.div
+      {/* <motion.div
         initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1 }}
@@ -98,25 +163,25 @@ const Achievements: React.FC = () => {
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-yellow-300">
           <FlipWords words={words} className="font-black" />
         </p>
-      </motion.div>
+      </motion.div> */}
 
       {/* Filter Dropdown */}
       <motion.div
-        initial={{ y: 80, opacity: 0 }}
+        initial={{ y: 60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1 }}
-        className="flex flex-row gap-3 items-center justify-center mb-15"
+        className="flex flex-row gap-3 items-center justify-center mb-15 py-5"
       >
-        <label className="text-lg font-semibold text-white flex items-center gap-2">
+        <label className="text-lg font-semibold text-zinc-900 flex items-center gap-2 font-ubuntu">
           <Calendar /> Select Year
         </label>
         <div className="relative">
           <select
             value={selectedYear}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedYear(e.target.value)}
-            className="appearance-none bg-transparent text-white text-base font-medium px-4 py-1 rounded-sm shadow-lg backdrop-blur-sm border border-white focus:outline-none focus:ring-2 focus:ring-white w-40"
+            className="appearance-none bg-transparent text-zinc-900 text-base font-medium px-4 py-1 rounded-sm shadow-lg backdrop-blur-sm border border-white focus:outline-none focus:ring-2 focus:ring-white w-40"
           >
-            <option value="" className="bg-gray-800 text-white">All Years</option>
+            <option value="" className="bg-gray-800 text-zinc-900">All Years</option>
             {uniqueYears.map((year, idx) => (
               <option key={idx} value={year} className="bg-gray-800 text-white">
                 {year}
@@ -135,21 +200,24 @@ const Achievements: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* Cards Section */}
+
+       {/* Cards Section */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
         className={`w-full ${!selectedYear ? 'animate-marquee' : ''}`}
       >
-        <div className={`flex ${!selectedYear ? 'whitespace-nowrap' : 'flex-wrap justify-center'} gap-6 px-6`}>
+        <div className={`flex ${!selectedYear ? 'whitespace-nowrap' : 'flex-wrap justify-center'} gap-6 px-6 py-5`}>
+
           {displayData.map((item, index) => (
             <motion.div
               whileHover={{ scale: 1.05 }}
               key={`${item._id}-${index}`}
               onClick={() => handleCardClick(item.year)}
-              className="relative min-w-[17.3rem] max-w-[17.3rem] bg-white/10 backdrop-blur border border-white/20 text-white rounded-xl h-82 flex flex-col items-center justify-start cursor-pointer shadow-blue-800 shadow-lg"
+              className="relative min-w-[17.3rem] max-w-[17.3rem] bg-white/10 backdrop-blur border border-white/20 text-white rounded-xl h-82 flex flex-col items-center justify-start cursor-pointer shadow-zinc-900 shadow-lg"
             >
+
               <div
                 style={{
                   backgroundImage: `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url(/banner3.jpg)`,
@@ -162,7 +230,7 @@ const Achievements: React.FC = () => {
               <p className="absolute text-2xl font-bold text-white top-7 text-center">{item.year}</p>
               <div className="text-center w-[100%] h-[60%] bg-white/60 rounded-b-xl flex flex-col p-2">
                 <div className="w-full flex items-center justify-between text-gray-900 px-1">
-                  <img src="/logo.png" className="w-15" alt="Logo" />
+                  <Image src="/logo.png" width={50} height={50} alt="Logo" />
                   <Logo size={14} />
                 </div>
                 <div className="py-2 h-full text-gray-600 max-w-full overflow-hidden">
@@ -177,9 +245,12 @@ const Achievements: React.FC = () => {
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </motion.div> 
+      <FooterNewsletter />
     </div>
-    </div>
+    
+   
+    
   );
 };
 
