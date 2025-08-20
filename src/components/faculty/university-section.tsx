@@ -311,10 +311,10 @@ useEffect(() => {
                               {faculty.facultyDesignation || "NA"} , Computer Science & Engineering
                             </p>
                             <div className="flex items-center space-x-4 text-xs text-muted-foreground">
-                              <span className="flex items-center">
+                              {/* <span className="flex items-center">
                                 <Star className="h-3 w-3 text-yellow-500 mr-1 group-hover:animate-spin" />
                                  {faculty.facultyRating || "NA"}
-                              </span>
+                              </span> */}
                               <span>{faculty.facultyPublications || "NA"} pubs</span>
                             </div>
                           </div>
@@ -369,13 +369,13 @@ useEffect(() => {
 
                             {/* Rating */}
                             <div className="flex items-center gap-2 text-sm">
-                              <span className="font-medium text-gray-600">
+                              {/* <span className="font-medium text-gray-600">
                                 Rating:{" "}
-                              </span>
+                              </span> */}
                               <div className="flex items-center">
-                                <Star className="h-3 w-3 text-yellow-500 mr-1" />
+                                {/* <Star className="h-3 w-3 text-yellow-500 mr-1" /> */}
                                 <span className="text-gray-900">
-                                  {faculty.facultyRating || "NA"}/5.0
+                                  {/* {faculty.facultyRating || "NA"}/5.0 */}
                                 </span>
                               </div>
                             </div>

@@ -9,6 +9,7 @@ import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
+import Navigation from "@/components/navbar/navbar";
 
 type RawApiNotice = {
   _id?: string;
@@ -92,10 +93,11 @@ export default function MainPage() {
   return (
     <>
       <div className="relative z-10">
+        <Navigation />
               {/* Hero Header */}
               <ScrollAnimation animation="slideDown">
-                <header className="relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-gray-800 to-slate-800"></div>
+                <header className="relative overflow-hidden mt-[9vh]">
+                  <div className=" absolute inset-0 bg-gradient-to-br from-zinc-900 via-gray-800 to-slate-800"></div>
                   <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20"></div>
                   <div className="relative max-w-7xl mx-auto px-6 py-20">
                     <div className="text-center text-white">

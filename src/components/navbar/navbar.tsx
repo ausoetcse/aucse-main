@@ -31,17 +31,19 @@ import {
 } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
 import React, { useState } from "react"
+import { BaseUrl } from "@/lib/baseurl"
+
 export default function Navigation() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     
       const navItems = [
     {
       name: "Home",
-      link: "#home",
+      link: "/",
     },
     {
       name: "About",
-      link: "https://www.aucse.in/About-Us",
+      link: `${BaseUrl.base}/About-Us`,
     },
     {
       name: "Notice",
@@ -49,7 +51,7 @@ export default function Navigation() {
     },
     {
       name: "Programs",
-      link: "https://www.aucse.in/programs",
+      link: `${BaseUrl.base}/programs`,
     },
     {
       name: "Events",
@@ -57,14 +59,10 @@ export default function Navigation() {
     },
     {
       name: "Calendar",
-      link: "https://www.aucse.in/calendar",
+      link: `${BaseUrl.base}/calendar`,
     },
     {
-      name: "Our Team",
-      link: "/dev",
-    },
-    {
-      name: "Contact Us",
+      name: "Contact",
       link: "/contact",
     },
 
@@ -79,19 +77,19 @@ export default function Navigation() {
       items: [
         {
           name: "Faculty",
-          link: "https://www.aucse.in/people",
+          link: `${BaseUrl.base}/people/faculty`,
           icon: GraduationCap,
           description: "Meet our expert faculty",
         },
         {
           name: "Timetable",
-          link: "https://www.aucse.in/timetable",
+          link: `${BaseUrl.base}/timetable`,
           icon: Calendar,
           description: "Class schedules & timing",
         },
         {
           name: "Research",
-          link: "https://www.aucse.in/more/research",
+          link: `${BaseUrl.base}/research`,
           icon: Microscope,
           description: "Cutting-edge research",
         },
@@ -104,13 +102,13 @@ export default function Navigation() {
       items: [
         {
           name: "Alumni",
-          link: "https://www.aucse.in/people/alumni",
+          link: `${BaseUrl.base}/alumni`,
           icon: Users,
           description: "Connect with graduates",
         },
         {
           name: "Placements",
-          link: "https://www.aucse.in/more/placement",
+          link: `${BaseUrl.base}/placement`,
           icon: Briefcase,
           description: "Career opportunities",
         },
@@ -122,10 +120,59 @@ export default function Navigation() {
       title: "Resources",
       gradient: "from-neutral-600/10 to-white/20 border-2",
       items: [
-        { name: "Explore", link: "https://www.aucse.in/more", icon: Globe, description: "Discover more features" },
+        { name: "Explore", link: `${BaseUrl.base}/explore`, icon: Globe, description: "Discover more features" },
         { name: "Our Team", link: "./dev", icon: Users, description: "Development team" },
         { name: "Support", link: "#", icon: HeadphonesIcon, description: "Get help & assistance" },
         { name: "Resources", link: "#", icon: BookOpen, description: "Study materials & guides" },
+      ],
+    },
+  ]
+
+  const quickLinks = [
+     {
+      title: "Quick Links",
+      gradient: "from-neutral-600/10 to-white/20 border-2",
+      items: [
+        {
+          name: "Home",
+          link: `${BaseUrl.base}/people/faculty`,
+          icon: GraduationCap,
+          description: "Meet our expert faculty",
+        },
+        {
+          name: "About",
+          link: `${BaseUrl.base}/timetable`,
+          icon: Calendar,
+          description: "Class schedules & timing",
+        },
+        {
+          name: "Notice",
+          link: `${BaseUrl.base}/research`,
+          icon: Microscope,
+          description: "Cutting-edge research",
+        },
+        
+        {
+          name: "Programs",
+          link: `${BaseUrl.base}/research`,
+          icon: Microscope,
+          description: "Cutting-edge research",
+        },
+        {
+          name: "Events",
+          link: `${BaseUrl.base}/research`,
+          icon: Microscope,
+          description: "Cutting-edge research",
+        },
+        {
+          name: "Calendar",
+          link: `${BaseUrl.base}/research`,
+          icon: Microscope,
+          description: "Cutting-edge research",
+        },
+        
+
+        
       ],
     },
   ]
@@ -209,6 +256,35 @@ export default function Navigation() {
               </div>
               {/* Drawer Content (reusing your dropdownSections grid) */}
               <div className="space-y-6 p-4 flex-1 overflow-y-auto">
+                <div className="md:hidden">
+                {quickLinks.map((section, sectionIndex) => (
+                  <div key={section.title} className="pb-4 border-b border-neutral-200 dark:border-neutral-700 last:border-0">
+                    <div className={`bg-gradient-to-r ${section.gradient} p-3 rounded-lg mb-3`}>
+                      <h4 className="text-zinc-900 font-semibold text-sm">{section.title}</h4>
+                    </div>
+                    <div className="space-y-2 ">
+                      {section.items.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.link}
+                          className="cursor-pointer flex items-center space-x-3 p-3 rounded-xl hover:bg-gradient-to-r hover:from-neutral-50 hover:to-neutral-100 dark:hover:from-neutral-800 dark:hover:to-neutral-700 transition-all"
+                          onClick={() => setIsDrawerOpen(false)}
+                        >
+                          <div className={`p-2 rounded-lg bg-gradient-to-r ${section.gradient}`}>
+                            <item.icon className="h-4 w-4 text-zinc-900" />
+                          </div>
+                          <div>
+                            <h5 className="font-medium text-neutral-900 dark:text-neutral-100 text-sm">
+                              {item.name}
+                            </h5>
+                            <p className="text-xs text-neutral-500 dark:text-neutral-400">{item.description}</p>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+                </div>
                 {dropdownSections.map((section, sectionIndex) => (
                   <div key={section.title} className="pb-4 border-b border-neutral-200 dark:border-neutral-700 last:border-0">
                     <div className={`bg-gradient-to-r ${section.gradient} p-3 rounded-lg mb-3`}>
@@ -219,7 +295,7 @@ export default function Navigation() {
                         <a
                           key={item.name}
                           href={item.link}
-                          className="flex items-center space-x-3 p-3 rounded-xl hover:bg-gradient-to-r hover:from-neutral-50 hover:to-neutral-100 dark:hover:from-neutral-800 dark:hover:to-neutral-700 transition-all"
+                          className="cursor-pointer flex items-center space-x-3 p-3 rounded-xl hover:bg-gradient-to-r hover:from-neutral-50 hover:to-neutral-100 dark:hover:from-neutral-800 dark:hover:to-neutral-700 transition-all"
                           onClick={() => setIsDrawerOpen(false)}
                         >
                           <div className={`p-2 rounded-lg bg-gradient-to-r ${section.gradient}`}>

@@ -95,19 +95,29 @@ export default function ContactPage() {
               </div>
               <div className="mt-8">
                 <div className="font-semibold mb-1">Address</div>
-                <div className="flex items-center gap-2 text-gray-500">
-                  <MapPin className="w-4 h-4" />
+                <div className="flex flex-1 items-start justify-start flex-col gap-2 text-blue-500 text-start w-full">
                   Adamas University, Barasat - Barrackpore Rd, Jagannathpur, Kolkata, West Bengal 700126
+              <div className="overflow-hidden rounded-sm shadow">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14718.916880339579!2d88.43755960464475!3d22.738303787598152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f898ec702e5daf%3A0xfa41b06da8478350!2sAdamas%20University!5e0!3m2!1sen!2sin!4v1755687968336!5m2!1sen!2sin"
+                    width="400"
+                    height="300"
+                    style={{  padding: "10px", background: "#d6d6d6" }}
+                    allowFullScreen={true}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
                 </div>
               </div>
               <div className="mt-4 flex flex-col gap-2">
                 <div className="flex items-center gap-2 text-gray-500">
                   <Phone className="w-4 h-4" />
-                  +91 98765 43210
+                  
                 </div>
                 <div className="flex items-center gap-2 text-gray-500">
                   <Mail className="w-4 h-4" />
-                  cse@adamasuniversity.ac.in
+                  ausoetcse@gmail.com
                 </div>
               </div>
             </div>
