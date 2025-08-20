@@ -7,6 +7,7 @@ import { Trophy, Calendar } from 'lucide-react';
 import Logo from '@/components/ui/Logo';
 import { Session } from '@/types';
 import { Navbar } from '@/components/navbar/resizable-navbar';
+import Navigation from '@/components/navbar/navbar';
 
 const Achievements: React.FC = () => {
   const router = useRouter();
@@ -72,15 +73,19 @@ const Achievements: React.FC = () => {
   }
 
   return (
-    <div className="overflow-x-hidden min-h-screen w-full text-white overflow-y-scroll pt-[7vh] pb-[10vh] fixed inset-0 bg-gradient-to-b from-blue-600 via-blue-300 to-white">
+    <div className='min-h-screen w-full  '>
+        <Navigation />
+        
+    <div className="overflow-x-hidden min-h-full w-full text-white overflow-y-auto mt-[9vh] pb-[10vh] fixed inset-0 bg-gradient-to-b from-blue-600 via-white to-gray-200">
       {/* Header */}
-      
+ 
       <motion.div
         initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1 }}
         className="pt-10 pb-7 flex flex-col items-center text-center px-4 space-y-4"
       >
+        
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-classic text-white flex items-center justify-center gap-3 leading-tight tracking-wide">
           Awards & Achievements
           <Trophy size={40} className="text-white" strokeWidth={2.5} />
@@ -173,6 +178,7 @@ const Achievements: React.FC = () => {
           ))}
         </div>
       </motion.div>
+    </div>
     </div>
   );
 };
