@@ -141,7 +141,7 @@ export default function FooterNewsletter() {
 				<div className="mb-16 grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
 					<div className="col-span-2 lg:col-span-1">
 						<div className="mb-6 flex items-center space-x-2">
-							<Image src="/logo.png" alt="Adamas Logo" width={60} height={60} className="h-15 w-15 object-contain" />
+							<Image src="/logo_op.png" alt="Adamas Logo" width={60} height={60} className="h-15 w-15 object-contain" />
 							<span className="text-xl  font-special-gothic">Adamas University</span>
 						</div>
 						<p className="mb-6 text-gray-400 font-ubuntu">
@@ -180,7 +180,7 @@ export default function FooterNewsletter() {
 				</div>
 				<div className="flex flex-col items-center justify-between border-t border-zinc-700 pt-8 md:flex-row">
 					<p className="mb-4 text-sm text-gray-400 md:mb-0 font-ubuntu">
-						© 2025 Adamas University. All rights reserved.
+						 2025 Adamas University. All rights reserved.
 					</p>
 					<div className="flex flex-wrap justify-center gap-6">
 						{legalLinks.map((link) => (

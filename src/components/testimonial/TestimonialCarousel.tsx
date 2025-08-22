@@ -6,7 +6,7 @@ import "keen-slider/keen-slider.min.css";
 
 type Testimonial = {
   name: string;
-  title: string;
+  // // title: string;
   message: string;
   image: string;
 };
@@ -14,7 +14,7 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     name: "Sanmoy Roy",
-    title: "Data Analyst at Scaler",
+    // title: "Data Analyst at Scaler",
     message:
       "Adamas gave me more than a degree — it gave me confidence and clarity. The real-world projects were game changers.",
     image:
@@ -22,7 +22,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Rhytam Garai",
-    title: "Software Engineer at Google",
+    // title: "Software Engineer at Google",
     message:
       "Thanks to Adamas, I learned how to think like an engineer. Their hands-on approach prepared me for global tech challenges.",
     image:
@@ -30,7 +30,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Pretam Chandra",
-    title: "AI Research Intern at Microsoft",
+    // title: "AI Research Intern at Microsoft",
     message:
       "The faculty at Adamas inspired me to dig deep into AI. I owe my research mindset to their constant support.",
     image:
@@ -38,7 +38,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Pragya Das",
-    title: "Product Designer at Adobe",
+    // title: "Product Designer at Adobe",
     message:
       "Adamas nurtured my creative side while grounding me in tech. I found my passion for UX design here.",
     image:
@@ -46,7 +46,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Subhojit Santra",
-    title: "DevOps Engineer at Atlassian",
+    // title: "DevOps Engineer at Atlassian",
     message:
       "The project-based learning model made me industry-ready from day one. It’s the best decision I ever made.",
     image:
@@ -54,7 +54,7 @@ const testimonials: Testimonial[] = [
   },
     {
     name: "Sanmoy Roy",
-    title: "Data Analyst at Scaler",
+    // title: "Data Analyst at Scaler",
     message:
       "Adamas gave me more than a degree — it gave me confidence and clarity. The real-world projects were game changers.",
     image:
@@ -62,7 +62,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Rhytam Garai",
-    title: "Software Engineer at Google",
+    // title: "Software Engineer at Google",
     message:
       "Thanks to Adamas, I learned how to think like an engineer. Their hands-on approach prepared me for global tech challenges.",
     image:
@@ -70,7 +70,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Pretam Chandra",
-    title: "AI Research Intern at Microsoft",
+    // title: "AI Research Intern at Microsoft",
     message:
       "The faculty at Adamas inspired me to dig deep into AI. I owe my research mindset to their constant support.",
     image:
@@ -78,7 +78,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Pragya Das",
-    title: "Product Designer at Adobe",
+    // title: "Product Designer at Adobe",
     message:
       "Adamas nurtured my creative side while grounding me in tech. I found my passion for UX design here.",
     image:
@@ -86,7 +86,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Subhojit Santra",
-    title: "DevOps Engineer at Atlassian",
+    // title: "DevOps Engineer at Atlassian",
     message:
       "The project-based learning model made me industry-ready from day one. It’s the best decision I ever made.",
     image:
@@ -94,7 +94,7 @@ const testimonials: Testimonial[] = [
   },
     {
     name: "Pragya Das",
-    title: "Product Designer at Adobe",
+    // title: "Product Designer at Adobe",
     message:
       "Adamas nurtured my creative side while grounding me in tech. I found my passion for UX design here.",
     image:
@@ -102,14 +102,14 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Subhojit Santra",
-    title: "DevOps Engineer at Atlassian",
+    // title: "DevOps Engineer at Atlassian",
     message:
       "The project-based learning model made me industry-ready from day one. It’s the best decision I ever made.",
     image:
       "/testimonial/4.png",
   },  {
     name: "Pragya Das",
-    title: "Product Designer at Adobe",
+    // title: "Product Designer at Adobe",
     message:
       "Adamas nurtured my creative side while grounding me in tech. I found my passion for UX design here.",
     image:
@@ -117,7 +117,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Subhojit Santra",
-    title: "DevOps Engineer at Atlassian",
+    // title: "DevOps Engineer at Atlassian",
     message:
       "The project-based learning model made me industry-ready from day one. It’s the best decision I ever made.",
     image:
@@ -137,7 +137,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
       />
       <div>
         <h3 className="font-semibold text-blue-900">{testimonial.name}</h3>
-        <p className="text-sm text-zinc-200/80">{testimonial.title}</p>
+        {/* <p className="text-sm text-zinc-200/80">{testimonial.title}</p> */}
       </div>
     </div>
     <p className="text-white">{testimonial.message}</p>
@@ -227,14 +227,14 @@ const TestimonialCarousel: React.FC = () => {
   return (
     <section className="px-2 py-10 bg-gradient-to-b to-[#001885] from-[#ffffff]">
       <div className="max-w-8xl mx-auto text-justify">
-        <h2 className="scroll-m-20 text-center text-5xl font-extrabold tracking-tight  font-special-gothic">What our Student Says</h2>
-        <p className="text-zinc-900 text-sm leading-start p-5 mb-4 font-ubuntu">
+        <h2 className="scroll-m-20 text-center text-5xl font-extrabold tracking-tight  font-special-gothic mb-4">What our Student Says</h2>
+        {/* <p className="text-zinc-900 text-sm leading-start p-5 mb-4 font-ubuntu">
           Discover the voices of Adamas University. Our students share how
           academic rigor, mentorship, and real-world exposure helped shape their
           personal and professional journeys. Their stories reflect the vibrant
           learning environment and transformative impact of being part of Adamas.
           Explore their experiences and envision your future with us.
-        </p>
+        </p> */}
  
         <div className="lg:hidden" ref={sliderRef}>
           <div className="keen-slider">
@@ -251,7 +251,7 @@ const TestimonialCarousel: React.FC = () => {
                   />
                   <div>
                     <h3 className="font-semibold">{t.name}</h3>
-                    <p className="text-sm text-gray-500">{t.title}</p>
+                    {/* <p className="text-sm text-gray-500">{t.title}</p> */}
                   </div>
                 </div>
                 <p className=" text-gray-700">{t.message}</p>

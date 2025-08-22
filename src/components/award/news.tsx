@@ -104,7 +104,7 @@ export function NewsSection() {
 
         <div className="text-center">
           <Button variant="outline" className="rounded-full px-6 py-2 border-gray-300 hover:bg-gray-100 bg-transparent" asChild>
-            <Link href="https://aucse-awards-achievements.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <Link href="http://www.aucse.in/achievements" target="_blank" rel="noopener noreferrer">
               View More
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
