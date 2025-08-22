@@ -79,9 +79,11 @@ const Achievements: React.FC = () => {
   return (
 
         
-    <div className="overflow-x-hidden min-h-full w-full text-white  fixed inset-0 ">
-      {/* Header */}<Navigation />
+                  <div>
+                    
                     <ScrollAnimation animation="slideDown">
+                      <Navigation />
+                    
                       <header className="relative overflow-hidden mt-[9vh]">
                         <div className=" absolute inset-0 bg-gradient-to-br from-zinc-900 via-gray-800 to-slate-800"></div>
                         <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20"></div>
@@ -143,6 +145,7 @@ const Achievements: React.FC = () => {
                         </div>
                       </header>
                     </ScrollAnimation>
+                    
  
       {/* <motion.div
         initial={{ y: 80, opacity: 0 }}
