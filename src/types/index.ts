@@ -12,6 +12,7 @@ export interface Award {
   createdAt?: string;
 }
 
+
 export interface Session {
   _id: string;
   year: string;

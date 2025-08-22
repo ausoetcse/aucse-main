@@ -177,6 +177,10 @@
   will-change: transform;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 
 @keyframes marquee {
   0% { transform: translateX(0); }
