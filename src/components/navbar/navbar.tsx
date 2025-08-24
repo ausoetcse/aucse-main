@@ -44,7 +44,7 @@ export default function Navigation() {
     },
     {
       name: "About",
-      link: `${BaseUrl.base}/About-Us`,
+      link: `/aboutus`,
     },
     {
       name: "Notice",

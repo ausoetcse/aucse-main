@@ -29,6 +29,7 @@ const eslintConfig = [
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-unused-expressions': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslintreact/no-unescaped-entities': 'off',
     },
   },
 ]
