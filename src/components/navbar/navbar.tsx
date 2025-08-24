@@ -32,6 +32,7 @@ import {
 import { AnimatePresence, motion } from "framer-motion"
 import React, { useState } from "react"
 import { BaseUrl } from "@/lib/baseurl"
+import { NavigationMenuTrigger } from "@radix-ui/react-navigation-menu"
 
 export default function Navigation() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -183,6 +184,7 @@ export default function Navigation() {
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
+          
            {/* Enhanced More Dropdown */}
            <div className="relative top-0 right-0 items-center ">
 
