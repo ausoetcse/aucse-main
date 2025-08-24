@@ -72,9 +72,11 @@ export default function UniversitySection() {
     });
   };
 
+  const [autoScroll, setAutoScroll] = useState(true);
   useEffect(() => {
     setIsLoaded(true);
 
+    if (!autoScroll) return;
     // Auto-scroll functionality
     const facultyInterval = setInterval(() => {
       if (facultyEmblaApi) facultyEmblaApi.scrollNext();
@@ -88,7 +90,7 @@ export default function UniversitySection() {
       clearInterval(facultyInterval);
       clearInterval(companiesInterval);
     };
-  }, [facultyEmblaApi, companiesEmblaApi]);
+  }, [facultyEmblaApi, companiesEmblaApi, autoScroll]);
 
 const [facultyMembers, setFacultyMembers] = useState<any[]>([]);
 
@@ -243,7 +245,7 @@ useEffect(() => {
             className={`text-center mb-12 ${
               isLoaded ? "animate-fade-in-up" : "opacity-0"
             }`}
-            style={{ animationDelay: "800ms" }}
+            style={{ animationDelay: "1000ms" }}
           >
             <h3 className="text-3xl font-bold mb-4 text-white font-special-gothic">
               Our Expert Faculty
@@ -405,6 +407,12 @@ useEffect(() => {
                             onClick={(e) => {
                               e.stopPropagation();
                               toggleFacultyExpansion(faculty.facultyName);
+                              if (expandedFaculty.has(faculty.facultyName)) {                  
+                                setAutoScroll(true);
+                              } else {
+                                // Opening view more
+                                setAutoScroll(false);
+                              }
                             }}
                             variant="outline"
                             size="sm"
