@@ -27,6 +27,7 @@ interface NavItemsProps {
   items: {
     name: string;
     link: string;
+    dropdown?: {name: string; link: string}[];
   }[];
   className?: string;
   onItemClick?: () => void;
@@ -127,6 +128,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       )}
     >
       {items.map((item, idx) => (
+        <div key={`navitem-${idx}`} className="relative group">
         <a
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
@@ -140,9 +142,24 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
               className="absolute inset-0 h-full w-full rounded-full border-2 border-blue-500 focus:border-blue-500 dark:bg-blue-700"
             />
           )}
-          <span className="relative z-20">{item.name}</span>
+          <span className="relative z-20">{item.name} </span>
         </a>
+        {item.dropdown && (
+        <div className="absolute left-0 mt-2 w-40 p-2 border-2 border-blue-500 bg-white shadow-lg rounded-xl opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition z-50">
+          {item.dropdown.map((drop) => (
+            <a
+              key={drop.name}
+              href={drop.link}
+              className = "block px-4 py-2 hover:bg-blue-100 hover:outline-2 hover:outline-blue-500 transition-all duration-300 ease-linear rounded-xl text-zinc-900"
+              >
+                {drop.name}
+              </a>
+          ))}
+        </div>
+      )}
+      </div>
       ))}
+      
     </motion.div>
   );
 };

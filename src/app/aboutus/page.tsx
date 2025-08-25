@@ -226,7 +226,7 @@ const SpecializationShowcase: React.FC = () => {
             setActiveSpec(prev => (prev + 1) % specializations.length);
         }, 4000);
         return () => clearInterval(interval);
-    }, []);
+    },);
 
     return (
         <div className="py-24 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50">
@@ -236,7 +236,7 @@ const SpecializationShowcase: React.FC = () => {
                         Areas of <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Specialization</span>
                     </h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Explore cutting-edge technologies and build expertise in tomorrow's most in-demand fields
+                        Explore cutting-edge technologies and build expertise in tomorrows most in-demand fields
                     </p>
                 </div>
 
@@ -777,8 +777,10 @@ export default function AboutUsPage() {
                                 animation: 'scaleIn 0.8s ease-out'
                             }}
                         >
-                            <img
+                            <Image
                                 src="/logo.png"
+                                width={100}
+                                height={100}
                                 alt="Institution Logo"
                                 className="mx-auto h-24 w-24 object-contain drop-shadow-2xl"
                             />

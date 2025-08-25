@@ -28,6 +28,11 @@ import {
   ArrowUp,
   X,
   Menu,
+  ArrowDown,
+  BookUser,
+  Calendar1,
+  Calendar1Icon,
+  CalendarRange,
 } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
 import React, { useState } from "react"
@@ -36,11 +41,12 @@ import { NavigationMenuTrigger } from "@radix-ui/react-navigation-menu"
 
 export default function Navigation() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
       const navItems = [
     {
       name: "Home",
       link: "/",
+
     },
     {
       name: "About",
@@ -53,15 +59,31 @@ export default function Navigation() {
     {
       name: "Programs",
       link: `${BaseUrl.base}/programs`,
+       dropdown: [
+        { name: "B.Tech", link: "/" },
+        { name: "BCA", link: "/" },
+        { name: "M.Tech", link: "/" },
+        { name: "MCA", link: "/"},
+      ]
+    },
+    {
+      name: "Timetable",
+      link: `${BaseUrl.base}/programs`,
+       dropdown: [
+        { name: "2025-29", link: "/" },
+        { name: "2024-28", link: "/" },
+        { name: "2023-27", link: "/" },
+        { name: "2022-26", link: "/"},
+      ]
     },
     {
       name: "Events",
       link: "/achievements",
     },
-    {
-      name: "Calendar",
-      link: `${BaseUrl.base}/calendar`,
-    },
+    // {
+    //   name: "Calendar",
+    //   link: `${BaseUrl.base}/calendar`,
+    // },
     {
       name: "Contact",
       link: "/contact",
@@ -71,7 +93,7 @@ export default function Navigation() {
 
 
   // Enhanced dropdown menu items organized in three grids
-  const dropdownSections = [
+  const drawerSections = [
     {
       title: "Academic",
       gradient: "from-neutral-600/10 to-white/20 border-2",
@@ -156,19 +178,19 @@ export default function Navigation() {
         {
           name: "Programs",
           link: `${BaseUrl.base}/research`,
-          icon: Microscope,
+          icon: BookUser,
           description: "Cutting-edge research",
         },
         {
           name: "Events",
           link: `${BaseUrl.base}/research`,
-          icon: Microscope,
+          icon: CalendarRange,
           description: "Cutting-edge research",
         },
         {
           name: "Calendar",
           link: `${BaseUrl.base}/research`,
-          icon: Microscope,
+          icon: Calendar1Icon,
           description: "Cutting-edge research",
         },
         
@@ -177,14 +199,15 @@ export default function Navigation() {
       ],
     },
   ]
+
+
     return (
         <div>
             <Navbar>
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
-          <NavItems items={navItems} />
-          
+          <NavItems items={navItems}/>
            {/* Enhanced More Dropdown */}
            <div className="relative top-0 right-0 items-center ">
 
@@ -287,7 +310,7 @@ export default function Navigation() {
                   </div>
                 ))}
                 </div>
-                {dropdownSections.map((section, sectionIndex) => (
+                {drawerSections.map((section, sectionIndex) => (
                   <div key={section.title} className="pb-4 border-b border-neutral-200 dark:border-neutral-700 last:border-0">
                     <div className={`bg-gradient-to-r ${section.gradient} p-3 rounded-lg mb-3`}>
                       <h4 className="text-zinc-900 font-semibold text-sm">{section.title}</h4>
