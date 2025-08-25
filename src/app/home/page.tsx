@@ -55,10 +55,15 @@ export default function HomePage() {
 
 
 
+
   return (
+ 
     <div className="w-full bg-neutral-50 overflow-hidden mt-20">
       
     <Navigation />
+    <div className="relative w-full p-2 bg-blue-800 flex justify-center text-center gap-2 text-white">Visit our old site!
+      <a href="https://sites.google.com/view/ausoetcse/home" target="_blank" className="text-white hover:underline">aucse.in</a>
+    </div>
       {/* Hero */}
       <div className="h-auto mt-0 top-0 relative flex justify-center items-center w-full">
         <BannerSlider />
@@ -147,6 +152,7 @@ export default function HomePage() {
         </button>
       )}
     </div>
+
   )
 }
 
