@@ -41,34 +41,34 @@ const newsItems = [
 export function NewsSection() {
     const [loading, setLoading] = useState(true);
     const [ApiAwardAndAchivement, setApiAwardAndAchivement] = useState([]);
-      const [apiError, setApiError] = useState<string | null>(null);
-      useEffect(() => {
-    async function fetchAwardAndAchivement() {
-      try {
-        setLoading(true);
-        setApiError(null);
+  //     const [apiError, setApiError] = useState<string | null>(null);
+  //     useEffect(() => {
+  //   async function fetchAwardAndAchivement() {
+  //     try {
+  //       setLoading(true);
+  //       setApiError(null);
         
-        const response = await fetch(`https://admin-panel-aucse.vercel.app/api/fetchAwardAndAchievementData/?apikey=hello&filter={"number":6}`);
+  //       const response = await fetch(`https://admin-panel-aucse.vercel.app/api/fetchAwardAndAchievementData/?apikey=hello&filter={"number":6}`);
         
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
         
-        const json = await response.json();
+  //       const json = await response.json();
 
       
-        setApiAwardAndAchivement(json.data);
-      } catch (error) {
-        console.error("Failed to fetch notices:", error);
-        setApiError(error instanceof Error ? error.message : 'Unknown error occurred');
-        setApiAwardAndAchivement([]);
-      } finally {
-        setLoading(false);
-      }
-    }
+  //       setApiAwardAndAchivement(json.data);
+  //     } catch (error) {
+  //       console.error("Failed to fetch notices:", error);
+  //       setApiError(error instanceof Error ? error.message : 'Unknown error occurred');
+  //       setApiAwardAndAchivement([]);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
     
-    fetchAwardAndAchivement();
-  }, []);
+  //   fetchAwardAndAchivement();
+  // }, []);
   return (
     <section className="py-16 px-6 bg-white">
       <div className="max-w-8xl mx-auto">
