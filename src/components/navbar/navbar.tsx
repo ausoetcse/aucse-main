@@ -58,12 +58,12 @@ export default function Navigation() {
     },
     {
       name: "Programs",
-      link: `${BaseUrl.base}/programs`,
+      link: `/programs`,
        dropdown: [
-        { name: "B.Tech", link: "/" },
-        { name: "BCA", link: "/" },
-        { name: "M.Tech", link: "/" },
-        { name: "MCA", link: "/"},
+        { name: "B.Tech", link: "/programs/courses" },
+        { name: "BCA", link: "/programs/courses" },
+        { name: "M.Tech", link: "/programs/courses" },
+        { name: "MCA", link: "/programs/courses" },
       ]
     },
     {

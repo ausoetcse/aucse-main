@@ -153,25 +153,38 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
           style={{ fontFamily: 'Ubuntu, system-ui, sans-serif' }}
         >
           
+              <div className="absolute top-0 left-0 flex justify-start items-start flex-col w-full px-4 ">
+              <h1 className="text-[6vw] md:text-[5vw] font-bold  text-zinc-900 mb-0 tracking-widest font-special-gothic text-start " >ADAMAS UNIVERSITY</h1>
+              <p className=" text-lg  tracking-wide text-gray-600 font-ubuntu text-start">Department of Computer Science & Engineering</p>
+             </div>
 
-          <div className="relative w-full max-w-2xl px-8">
+             <div className="absolute bottom-0 right-0 flex justify-end items-end flex-col w-full px-0 ">
+              <span className="text-gray-800 font-special-gothic text-6xl font-bold px-4">{Math.round(progress)}%</span>
+              <div className="w-full h-2 bg-gray-200 overflow-hidden px-0">
+                        <motion.div 
+                          className="h-full bg-gradient-to-r from-zinc-700 to-zinc-800 "
+                          initial={{ width: 0 }}
+                          animate={{ width: `${progress}%` }}
+                          transition={{ duration: 0.8, ease: "easeOut" }}
+                        />
+                      </div>
+             </div>
+          <div className="flex flex-col items-center justify-center">
             {/* Logo Section */}
 
-              <div className="relative w-56 h-56 mx-auto mb-8 flex items-center justify-center">
+              <div className="absolute  w-full h-full mx-auto flex items-center justify-center">
                   <img
-                    src="/logo.png"
+                    src="/logo_op.png"
                     alt="University Logo"
-                    className="w-32 h-32 object-contain"
+                    className="w-150 h-150 object-contain"
                   />
               
          
               </div>
-              <h1 className="text-4xl font-bold text-gray-800 mb-2 tracking-wide font-special-gothic text-center" >ADAMAS UNIVERSITY</h1>
-              <p className="text-gray-600 text-sm tracking-wide font-medium font-ubuntu text-center">Department of Computer Science & Engineering</p>
-          
+
 
             {/* Main Content */}
-            <div className="space-y-12">
+            <div className="space-y-12 absolute bottom-5 left-2">
               {/* Loading State */}
               {isLoading ? (
                 <motion.div
@@ -180,25 +193,9 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
                   transition={{ delay: 0.4, duration: 0.6 }}
                   className="space-y-8"
                 >
-                  {/* Progress Bar */}
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center text-sm">
-                      <span className="text-gray-600 font-medium">Loading Assets</span>
-                      <span className="text-gray-800 font-light">{Math.round(progress)}%</span>
-                    </div>
-                    <div className="relative">
-                      <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                        <motion.div 
-                          className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${progress}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
 
-                  {/* Loading Message + Animated Dots */}
+
+                  {/* Loading Message + Animated Dots
                   <motion.div 
                     className="text-center"
                     key={currentMessage}
@@ -212,7 +209,7 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
                       <LoadingDots />
                     </p>
                   </motion.div>
-
+ */}
 
                   {/* Completion State */}
                   {isComplete && (
@@ -222,9 +219,9 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.5, duration: 0.8 }}
                     >
-                      <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-6 py-3 shadow-sm">
+                      <div className="flex items-center gap-3 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-md px-6 py-3 shadow-sm">
                         <motion.div 
-                          className="w-2 h-2 bg-green-500 rounded-full"
+                          className="w-2 h-2 bg-green-400 rounded-full"
                           animate={{ scale: [1, 1.2, 1] }}
                           transition={{ duration: 1.5, repeat: Infinity }}
                         />
@@ -241,13 +238,13 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
                   transition={{ delay: 0.4, duration: 0.6 }}
                   className="text-center space-y-8"
                 >
-                  <div className="space-y-4">
+                  {/* <div className="space-y-4">
                     <h2 className="text-xl font-light text-gray-700 font-special-gothic" >Welcome to the University Portal</h2>
                     <p className="text-gray-600 text-sm leading-relaxed max-w-md mx-auto font-ubuntu">
                       Experience our comprehensive digital platform showcasing academic excellence, 
                       research achievements, and student success stories.
                     </p>
-                  </div>
+                  </div> */}
                   
                   <motion.button
                     onClick={startLoading}
@@ -260,22 +257,15 @@ export function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 3, repeat: Infinity }}
                     />
-                    <span className="font-medium">Begin Experience</span>
-                    <Play className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-500" />
+                    <span className="font-medium">Get Started</span>
+                    
                   </motion.button>
                 </motion.div>
               )}
             </div>
 
             {/* Footer */}
-            <motion.div 
-              className="text-center mt-16 pt-8 border-t border-gray-200"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
-            >
-              <p className="text-gray-500 text-xs tracking-wide">Adamas University • Empowering minds, shaping futures</p>
-            </motion.div>
+
           </div>
         </motion.div>
       )}

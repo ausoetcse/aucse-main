@@ -1,6 +1,9 @@
 'use client'
 
 import FooterNewsletter from "@/components/footer/footer-newsletter";
+import ModernHeader from "@/components/header-old/page";
+import SectionHeader from "@/components/header-old/page";
+import Header from "@/components/header/page";
 import { LoadingScreen } from "@/components/loader/loading-screen";
 import Navigation from "@/components/navbar/navbar";
 import { Button } from "@/components/ui/button";
@@ -766,76 +769,30 @@ export default function AboutUsPage() {
     return (
         <div className="min-h-screen bg-white">
             <Navigation />
-            {/* Header Section - Keeping your original structure */}
-            <header className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 mt-[10vh]">
-                <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20"></div>
-                <div className="relative max-w-7xl mx-auto px-8 py-20">
-                    <div className="text-center text-white">
-                        <div
-                            className="mb-8"
-                            style={{
-                                animation: 'scaleIn 0.8s ease-out'
-                            }}
-                        >
-                            <Image
-                                src="/logo.png"
-                                width={100}
-                                height={100}
-                                alt="Institution Logo"
-                                className="mx-auto h-24 w-24 object-contain drop-shadow-2xl"
-                            />
-                        </div>
-                        
-                        <h1
-                            className="text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-indigo-100 bg-clip-text text-transparent"
-                            style={{
-                                animation: 'slideUp 0.8s ease-out 0.2s both'
-                            }}
-                        >
-                            About Us
-                        </h1>
-                        
-                        <p
-                            className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto"
-                            style={{
-                                animation: 'slideUp 0.8s ease-out 0.4s both'
-                            }}
-                        >
-                            Shaping the future of technology through excellence in education, research, and innovation
-                        </p>
 
-                        <div
-                            className="flex flex-wrap justify-center gap-4"
-                            style={{
-                                animation: 'slideUp 0.8s ease-out 0.6s both'
-                            }}
-                        >
-                            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                                <Sparkles className="h-5 w-5" />
-                                <span className="font-medium">Innovation</span>
-                            </div>
-                            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                                <Zap className="h-5 w-5" />
-                                <span className="font-medium">Excellence</span>
-                            </div>
-                            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                                <Target className="h-5 w-5" />
-                                <span className="font-medium">Research</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
+         <ModernHeader
+        title="About Us"
+        tagline="Distinctive digital solutions for leading and rising companies"
+        since="2014"
+        navItems={[
+          { label: "Mission & Vision", targetId: "about" },
+          { label: "Message", targetId: "message", count: 5 },
+        ]}
+      />
+            
             {/* Video Section - Enhanced version */}
             <VideoSection />
 
             {/* Overview Section - Your original component */}
+            <section id="about">
             <OverviewSection 
                 title="DEPARTMENT OVERVIEW"
                 navigationItems={aboutNavigationItems}
+               
             />
+            </section>
 
-            <div className="max-w-full mx-auto relative z-10">
+            <div className="max-w-full mx-auto relative z-10 " >
                 <Image 
                 src={"/naac.jpg"}
                 alt="NAAC A"
@@ -846,11 +803,14 @@ export default function AboutUsPage() {
                 />
             </div>
 
+            <section id="message">
             {/* Leadership Team Section - Enhanced version */}
             <LeadershipTeamSection 
                 title="Meet Our Leadership Team"
                 teamMembers={customTeamMembers}
             />
+            </section>
+
 
             <FooterNewsletter />
             <style jsx>{`

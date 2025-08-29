@@ -198,3 +198,7 @@
   animation: marquee-reverse 40s linear infinite;
   will-change: transform;
 }
+
+html {
+  scroll-behavior: smooth;
+}

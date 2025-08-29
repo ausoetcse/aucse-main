@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
 import Navigation from "@/components/navbar/navbar";
+import Header from "@/components/header/page";
+import ModernHeader from "@/components/header-old/page";
 
 type RawApiNotice = {
   _id?: string;
@@ -96,69 +98,17 @@ export default function MainPage() {
         
         <Navigation />
         
-              {/* Hero Header */}
-              <ScrollAnimation animation="slideDown">
-                <header className="relative overflow-hidden mt-[9vh]">
-                  <div className=" absolute inset-0 bg-gradient-to-br from-zinc-900 via-gray-800 to-slate-800"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20"></div>
-                  <div className="relative max-w-7xl mx-auto px-6 py-20">
-                    <div className="text-center text-white">
-                      <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.8 }}
-                        className="mb-8"
-                      >
-                        <Image
-                          src="/logo.png"
-                          alt="Adamas Logo"
-                          width={120}
-                          height={120}
-                          className="mx-auto h-24 w-24 object-contain drop-shadow-2xl"
-                        />
-                      </motion.div>
-                      
-                      <motion.h1
-                        initial={{ y: 50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-6xl font-bold mb-4 bg-gradient-to-r from-white via-gray-100 to-zinc-100 bg-clip-text text-transparent"
-                      >
-                        Notices
-                      </motion.h1>
-                      
-                      <motion.p
-                        initial={{ y: 50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto"
-                      >
-                        Notices calendar to keep you updated
-                      </motion.p>
-      
-                      <motion.div
-                        initial={{ y: 50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        className="flex justify-center gap-4"
-                      >
-                        <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                          <Sparkles className="h-5 w-5" />
-                          <span className="font-medium">Creative Minds</span>
-                        </div>
-                        <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                          <Zap className="h-5 w-5" />
-                          <span className="font-medium">Innovation Driven</span>
-                        </div>
-                        <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                          <Target className="h-5 w-5" />
-                          <span className="font-medium">Excellence Focused</span>
-                        </div>
-                      </motion.div>
-                    </div>
-                  </div>
-                </header>
-              </ScrollAnimation>
+        <ModernHeader 
+        title="Notice Board"
+        tagline="Announcements"
+        since="2014"
+        navItems={[
+          { label: "Notices", targetId: "" },
+          
+        ]}
+        />
+
+
       </div>
     <main className="container mx-auto ">
               <div className="max-w-7xl mx-auto px-6 py-12 flex flex-row gap-8 justify-between">
