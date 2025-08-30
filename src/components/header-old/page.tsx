@@ -25,11 +25,11 @@ const ModernHeader: React.FC<ModernHeaderProps> = ({
   navItems = [],
 }) => {
   return (
-    <header className="w-full bg-gradient-to-b from-blue-800 to-blue-900 border-b border-gray-300 mt-20 overflow-hidden">
+    <header className="w-full bg-gradient-to-b from-zinc-800 to-zinc-900 border-b border-gray-300 mt-20 overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto px-6 py-10">
         {/* Left: Big Title */}
         <div className="flex items-start">
-          <h1 className="w-full text-justify md:text-left text-[clamp(1.25rem,4vw,6rem)] font-bold leading-wide tracking-tight text-neutral-200 font-special-gothic">
+          <h1 className="w-full text-justify md:text-left text-[clamp(1.25rem,5vw,4rem)] font-bold leading-wide tracking-tight text-neutral-200 font-special-gothic">
             {title}.
           </h1>
         </div>

@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { X, ChevronLeft, ChevronRight, FileText, Download, ZoomIn, ZoomOut, Loader, AlertCircle } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, FileText, Download, ZoomIn, ZoomOut, Loader, AlertCircle, ChevronDown } from 'lucide-react';
 import Navigation from '@/components/navbar/navbar';
 import FooterNewsletter from '@/components/footer/footer-newsletter';
 import Image from 'next/image';
 
 // UPDATED PDF CONFIGURATION - Now supports multiple PDFs per specialization
 const pdfFiles = {
-  'cse-curriculum': { 
+  'cse-struc-2023-24': { 
     name: 'CSE Curriculum.pdf', 
-    url: '/pdfs/cse_curriculum.pdf',
-    fallbackUrl: '/pdfs/sample.pdf'
+    url: '/pdfs/cse-struc-2023-24.pdf',
+    fallbackUrl: '/pdfs/cse_btech.pdf'
   },
   'cse-syllabus': { 
     name: 'CSE Syllabus.pdf', 
@@ -328,13 +328,28 @@ const PDFModal = ({ isOpen, onClose, pdfKey }) => {
 };
 
 // UPDATED Program Page Component - Now supports multiple PDFs
-const ProgramPage = ({ program, specializations, onPDFClick }) => (
-  <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-    <div className="bg-white shadow-sm border-b">
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4 font-special-gothic">{program.title}</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-ubuntu">{program.description}</p>
+// Sidebar + Content Layout ProgramPage
+const ProgramPage = ({ program, specializations, onPDFClick }) => {
+  const [openIndexes, setOpenIndexes] = useState<number[]>([]);
+  const [selectedPDF, setSelectedPDF] = useState<string | null>(null);
+
+const toggleSpec = (index: number) => {
+  setOpenIndexes((prev) =>
+    prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
+  );
+};
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+      {/* Header */}
+      <div className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-6 py-8 text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4 font-special-gothic">
+            {program.title}
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-ubuntu">
+            {program.description}
+          </p>
           <div className="mt-6 flex justify-center">
             <span className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
               {program.duration} • {program.type}
@@ -342,69 +357,81 @@ const ProgramPage = ({ program, specializations, onPDFClick }) => (
           </div>
         </div>
       </div>
-    </div>
 
-    <div className="max-w-7xl mx-auto px-6 py-16">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4 font-special-gothic">Specializations</h2>
-        <p className="text-lg text-gray-600 font-ubuntu">Choose your path and explore detailed curriculum</p>
-      </div>
+      {/* Sidebar + Main */}
+      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Sidebar */}
+        <aside className="bg-white rounded-lg shadow-md border p-6 md:col-span-1">
+          <h3 className="text-lg font-bold text-gray-900 mb-4">Specializations</h3>
+          <div className="space-y-4">
+            {specializations.map((spec, index) => (
+              <div key={index} className="border rounded-md">
+                {/* Toggle button */}
+                <button
+                  onClick={() => toggleSpec(index)}
+                  className="flex items-center justify-between w-full px-3 py-2 text-left font-semibold text-gray-800 hover:bg-blue-50"
+                >
+                  <span>{spec.title}</span>
+                  {openIndexes.includes(index) && index ? (
+                    <ChevronDown className="w-4 h-4 text-gray-500" />
+                  ) : (
+                    <ChevronRight className="w-4 h-4 text-gray-500" />
+                  )}
+                </button>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {specializations.map((spec, index) => (
-          <div
-            key={`${spec.title}-${index}`}
-            className="group bg-white rounded-md shadow-sm hover:shadow-2xl transition-all duration-300 overflow-hidden border-2  border-blue-900 hover:border-blue-200"
-          >
-            <div className="p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-transparent flex items-center justify-center">
-                  <Image
-                    src="/logo.png"
-                    alt="logo"
-                    width={32}
-                    height={32}
-                    className=''
-                  />
+                {/* Expandable PDFs */}
+                {openIndexes.includes(index) && (
+                  <ul className={`overflow-hidden transition-all duration-300 ease-in-out
+                  ${openIndexes.includes(index) ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+                    {spec.pdfs.map((pdf, i) => (
+                      <li key={`${pdf.key}-${i}`}>
+                      <a
+                        onClick={() => onPDFClick(pdf.key)}
+                        className={`cursor-pointer block px-2 py-1.5 text-sm rounded-md transition
+                        ${pdf.key === selectedPDF ? "bg-blue-100 text-blue-800" : "text-gray-600 hover:bg-blue-50"}`}
+                      >
+                        {pdf.label}
+                      </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </aside>
+
+        {/* Main area */}
+        <main className="md:col-span-3">
+          <div className="bg-white shadow-md rounded-lg p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              About the Program
+            </h2>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              {program.description}
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {specializations.map((spec, index) => (
+                <div
+                  key={index}
+                  className="p-4 border rounded-lg shadow-sm hover:shadow-md transition"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    {spec.title}
+                  </h3>
+                  <p className="text-sm text-gray-600">{spec.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors font-ubuntu">
-                  {spec.title}
-                </h3>
-              </div>
-              
-              <p className="text-gray-600 mb-6 leading-relaxed">{spec.description}</p>
-              
-              <div className="space-y-3 mb-6">
-                <h4 className="font-semibold text-gray-900 text-sm uppercase tracking-wide">Key Areas:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {spec.keyAreas.map((area, i) => (
-                    <span key={`${area}-${i}`} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                      {area}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              
-              {/* UPDATED: Multiple PDF buttons */}
-              <div className="space-y-3">
-                {spec.pdfs.map((pdf, i) => (
-                  <button
-                    key={`${pdf.key}-${i}`}
-                    onClick={() => onPDFClick(pdf.key)}
-                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-xl font-semibold hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-200 flex items-center justify-center gap-2"
-                  >
-                    <FileText className="w-5 h-5" />
-                    {pdf.label}
-                  </button>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
-        ))}
+        </main>
       </div>
     </div>
-  </div>
-);
+  );
+};
+
+
 
 // UPDATED Main Component - Now with multiple PDFs per specialization
 export default function FixedProgramsWithSpecializations() {
@@ -424,8 +451,14 @@ export default function FixedProgramsWithSpecializations() {
           description: "Master programming, algorithms, software development, and cutting-edge computing technologies.",
           keyAreas: ["Programming", "Data Structures", "AI/ML", "Web Development"],
           pdfs: [
-            { key: "cse-curriculum", label: "View Curriculum PDF" },
-            { key: "cse-syllabus", label: "View Syllabus PDF" }
+            { key: "cse-struc-2023-24", label: "Course Structure" },
+            { key: "cse-struc-syl-btech", label: "Syllabus & Structure" },
+            { key: "cse-core-syl-2015-19", label: "2015-19 Syllabus" },
+            { key: "cse-syl-2016-2020", label: "2016-20 Syllabus" },
+            { key: "cse-syl-2017-2021", label: "2017-21 Syllabus" },
+            { key: "cse-syl-2018-2022", label: "2018-22 Syllabus" },
+            { key: "cse-syl-2019-2023", label: "2019-23 Syllabus" },
+            { key: "cse-syl-2020-2024", label: "2020-24 Syllabus" },
           ]
         },
         {
@@ -434,7 +467,7 @@ export default function FixedProgramsWithSpecializations() {
           keyAreas: ["Robotics", "Machine Learning", "Computer Vision", "Automation"],
           pdfs: [
             { key: "robotics-ai-curriculum", label: "View Curriculum PDF" },
-            { key: "robotics-ai-syllabus", label: "View Syllabus PDF" }
+            { key: "robotics-ai-syllabus", label: "2015-19 Syllabus" }
           ]
         },
         {
@@ -443,7 +476,7 @@ export default function FixedProgramsWithSpecializations() {
           keyAreas: ["AWS/Azure", "Microservices", "DevOps", "Scalability"],
           pdfs: [
             { key: "cloud-computing-curriculum", label: "View Curriculum PDF" },
-            { key: "cloud-computing-syllabus", label: "View Syllabus PDF" }
+            { key: "cloud-computing-syllabus", label: "2015-19 Syllabus" }
           ]
         },
         {
@@ -452,7 +485,7 @@ export default function FixedProgramsWithSpecializations() {
           keyAreas: ["Network Security", "Penetration Testing", "Cryptography", "Incident Response"],
           pdfs: [
             { key: "cyber-security-curriculum", label: "View Curriculum PDF" },
-            { key: "cyber-security-syllabus", label: "View Syllabus PDF" }
+            { key: "cyber-security-syllabus", label: "2015-19 Syllabus" }
           ]
         },
         {
@@ -461,7 +494,7 @@ export default function FixedProgramsWithSpecializations() {
           keyAreas: ["Deep Learning", "NLP", "Computer Vision", "Data Mining"],
           pdfs: [
             { key: "ai-ml-curriculum", label: "View Curriculum PDF" },
-            { key: "ai-ml-syllabus", label: "View Syllabus PDF" }
+            { key: "ai-ml-syllabus", label: "2015-19 Syllabus" }
           ]
         },
         {
@@ -470,7 +503,7 @@ export default function FixedProgramsWithSpecializations() {
           keyAreas: ["Enterprise Systems", "Business Analytics", "Project Management", "Digital Transformation"],
           pdfs: [
             { key: "cs-business-curriculum", label: "View Curriculum PDF" },
-            { key: "cs-business-syllabus", label: "View Syllabus PDF" }
+            { key: "cs-business-syllabus", label: "2015-19 Syllabus" }
           ]
         },
         {
@@ -479,7 +512,7 @@ export default function FixedProgramsWithSpecializations() {
           keyAreas: ["iOS Development", "Android Development", "React Native", "Flutter"],
           pdfs: [
             { key: "mobile-dev-curriculum", label: "View Curriculum PDF" },
-            { key: "mobile-dev-syllabus", label: "View Syllabus PDF" }
+            { key: "mobile-dev-syllabus", label: "2015-19 Syllabus" }
           ]
         },
         {
@@ -488,7 +521,7 @@ export default function FixedProgramsWithSpecializations() {
           keyAreas: ["Python/R", "Statistical Analysis", "Machine Learning", "Data Visualization"],
           pdfs: [
             { key: "data-science-curriculum", label: "View Curriculum PDF" },
-            { key: "data-science-syllabus", label: "View Syllabus PDF" }
+            { key: "data-science-syllabus", label: "2015-19 Syllabus" }
           ]
         }
       ]

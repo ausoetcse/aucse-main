@@ -393,12 +393,12 @@ const VideoSection: React.FC = () => {
                     </video>
                     
                     
-                    <button
+                    {/* <button
                         onClick={togglePlay}
                         className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-6 rounded-full transition-all duration-500 backdrop-blur-sm border border-white/20 hover:scale-110 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
                     >
-                        {isPlaying ? <Pause size={40} /> : <Play size={40} />}
-                    </button>
+                       
+                    </button> */}
 
                     
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
