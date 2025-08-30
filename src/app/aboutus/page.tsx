@@ -443,11 +443,11 @@ const LeadershipTeamSection: React.FC<LeadershipTeamSectionProps> = ({
         <div className="w-full py-24 bg-gradient-to-br from-white via-blue-50/50 to-indigo-50/50">
             <div className="max-w-7xl mx-auto px-8">
                 <div className="text-center mb-20">
-                    <h2 className="text-5xl font-bold text-gray-900 mb-6 tracking-wide">
+                    <h2 className="text-5xl font-bold text-gray-900 mb-6 tracking-wide font-special-gothic">
                         Meet Our Leadership Team
                     </h2>
                     <div className="h-0 border w-full  mx-auto mb-6"></div>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    <p className="text-xl text-gray-600 max-w-3xl mx-auto font-ubuntu">
                         Visionary leaders driving innovation and excellence in computer science education
                     </p>
                 </div>
@@ -489,10 +489,10 @@ const LeadershipTeamSection: React.FC<LeadershipTeamSectionProps> = ({
                                     
                                     <div className="relative z-10">
                                         <div className="mb-8">
-                                            <h3 className="text-3xl lg:text-4xl font-bold  mb-4">
+                                            <h3 className="text-3xl lg:text-4xl font-bold  mb-4 font-special-gothic">
                                                 {member.name}
                                             </h3>
-                                            <div className="h-0 w-full border mb-6"></div>
+                                            <div className="h-0 w-full border mb-6 font-ubuntu"></div>
                                             <p className="text-gray-700 text-lg font-medium leading-relaxed mb-8">
                                                 {member.designation}
                                             </p>

@@ -158,38 +158,38 @@ export default function Navigation() {
       items: [
         {
           name: "Home",
-          link: `${BaseUrl.base}/people/faculty`,
+          link: `/`,
           icon: GraduationCap,
           description: "Meet our expert faculty",
         },
         {
           name: "About",
-          link: `${BaseUrl.base}/timetable`,
+          link: `/aboutus`,
           icon: Calendar,
           description: "Class schedules & timing",
         },
         {
           name: "Notice",
-          link: `${BaseUrl.base}/research`,
+          link: `/notice`,
           icon: Microscope,
           description: "Cutting-edge research",
         },
         
         {
           name: "Programs",
-          link: `${BaseUrl.base}/research`,
+          link: `/programs`,
           icon: BookUser,
           description: "Cutting-edge research",
         },
         {
           name: "Events",
-          link: `${BaseUrl.base}/research`,
+          link: `/achievements`,
           icon: CalendarRange,
           description: "Cutting-edge research",
         },
         {
-          name: "Calendar",
-          link: `${BaseUrl.base}/research`,
+          name: "Timetable",
+          link: `/timetable`,
           icon: Calendar1Icon,
           description: "Cutting-edge research",
         },

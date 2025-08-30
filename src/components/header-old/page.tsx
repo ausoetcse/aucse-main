@@ -25,27 +25,27 @@ const ModernHeader: React.FC<ModernHeaderProps> = ({
   navItems = [],
 }) => {
   return (
-    <header className="w-full bg-gradient-to-b from-blue-800 to-blue-900 border-b border-gray-300 mt-20">
+    <header className="w-full bg-gradient-to-b from-blue-800 to-blue-900 border-b border-gray-300 mt-20 overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto px-6 py-10">
         {/* Left: Big Title */}
         <div className="flex items-start">
-          <h1 className="w-auto text-justify md:text-justify text-8xl font-bold leading-none tracking-tight text-neutral-200 font-special-gothic">
+          <h1 className="w-full text-justify md:text-left text-[clamp(1.25rem,4vw,6rem)] font-bold leading-wide tracking-tight text-neutral-200 font-special-gothic">
             {title}.
           </h1>
         </div>
 
         {/* Right: Nav + Tagline + Info */}
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between w-full overflow-hidden">
           {/* Nav */}
           <div className="flex justify-between items-center border-b border-gray-300 pb-3 text-sm">
-            <nav className="flex gap-6">
+            <nav className="flex gap-2">
               {navItems.map((item, i) => (
                   <a
                   key={i}
                   href={`#${item.targetId}`}
                   className="flex items-center gap-1 text-white hover:text-blue-200 transition"
                 >
-                <span className="border-l border-gray-300 pl-4 text-xs  uppercase font-ubuntu">
+                <span className="border-l border-gray-300 pl-2 text-xs  uppercase font-ubuntu">
                 {item.label}
                   {item.count && (
                     <span className="text-gray-500">({item.count})</span>

@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { Users, Zap, Target, ChevronDown, ChevronUp, Search, Sparkles, ArrowLeft } from "lucide-react";
 import FooterNewsletter from '@/components/footer/footer-newsletter';
 import { LoadingScreen } from '@/components/loader/loading-screen';
+import ModernHeader from '@/components/header-old/page';
 
 
 const Achievements: React.FC = () => {
@@ -95,69 +96,11 @@ const uniqueYearCards = Array.from(uniqueYearMap.values())
                     <div>
                     <Navigation />
                     
-                    <ScrollAnimation animation="slideDown">
-                    
-                      <header className="relative overflow-hidden mt-[9vh]">
-                        <div className=" absolute inset-0 bg-gradient-to-br from-zinc-900 via-gray-800 to-slate-800"></div>
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20"></div>
-                        <div className="relative max-w-7xl mx-auto px-6 py-20">
-                          <div className="text-center text-white">
-                            <motion.div
-                              initial={{ scale: 0.8, opacity: 0 }}
-                              animate={{ scale: 1, opacity: 1 }}
-                              transition={{ duration: 0.8 }}
-                              className="mb-8"
-                            >
-                              <Image
-                                src="/logo.png"
-                                alt="Adamas Logo"
-                                width={120}
-                                height={120}
-                                className="mx-auto h-24 w-24 object-contain drop-shadow-2xl"
-                              />
-                            </motion.div>
-                            
-                            <motion.h1
-                              initial={{ y: 50, opacity: 0 }}
-                              animate={{ y: 0, opacity: 1 }}
-                              transition={{ duration: 0.8, delay: 0.2 }}
-                              className="text-6xl font-bold mb-4 bg-gradient-to-r from-white via-gray-100 to-zinc-100 bg-clip-text text-transparent flex justify-center items-center"
-                            >
-                              Awards and Achievements
-                            </motion.h1>
-                            
-                            <motion.p
-                              initial={{ y: 50, opacity: 0 }}
-                              animate={{ y: 0, opacity: 1 }}
-                              transition={{ duration: 0.8, delay: 0.4 }}
-                              className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto"
-                            >
-                              Awards and achievements are a testament to our commitment to excellence and innovation.
-                            </motion.p>
-            
-                            <motion.div
-                              initial={{ y: 50, opacity: 0 }}
-                              animate={{ y: 0, opacity: 1 }}
-                              transition={{ duration: 0.8, delay: 0.6 }}
-                              className="flex justify-center gap-4"
-                            >
-                              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                                <Sparkles className="h-5 w-5" />
-                                <span className="font-medium">Creative Minds</span>
-                              </div>
-                              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                                <Zap className="h-5 w-5" />
-                                <span className="font-medium">Innovation Driven</span>
-                              </div>
-                              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                                <Target className="h-5 w-5" />
-                                <span className="font-medium">Excellence Focused</span>
-                              </div>
-                            </motion.div>
-                          </div>
-                        </div>
-                      </header>
-                    </ScrollAnimation>
+                  <ModernHeader title='Awards And Achievements' tagline='Unlocking Achievements' since='2014' 
+                  navItems={[
+                    { label: "Awards" , href: "/achievements" },
+                    { label: "Achievements", href: "/achievements" },
+                  ]}/>
                     
                   <motion.div
                     initial={{ y: 60, opacity: 0 }}
